@@ -1,0 +1,702 @@
+<<< System >>>
+
+Device Model: Samsung Galaxy S7 edge (Global)
+Device Type: Phablet
+Manufacturer: samsung
+Model: SM-G935F
+Brand: samsung
+Board: universal8890
+Device: hero2lte
+Hardware: samsungexynos8890
+Product: hero2ltexx
+Serial: 9886733536574f4947
+Serial (RIL): RF8H32MTW2J
+Installed RAM: 3.5 GB LPDDR4
+Total Memory: 3562 MB
+Available Memory: 1424 MB
+Internal Storage Total Space: 24.86 GB
+Internal Storage Free Space: 11.26 GB
+Device Features: android.hardware.audio.output
+android.hardware.bluetooth
+android.hardware.bluetooth_le
+android.hardware.camera
+android.hardware.camera.any
+android.hardware.camera.autofocus
+android.hardware.camera.capability.manual_post_processing
+android.hardware.camera.capability.manual_sensor
+android.hardware.camera.capability.raw
+android.hardware.camera.flash
+android.hardware.camera.front
+android.hardware.camera.level.full
+android.hardware.ethernet
+android.hardware.faketouch
+android.hardware.fingerprint
+android.hardware.location
+android.hardware.location.gps
+android.hardware.location.network
+android.hardware.microphone
+android.hardware.nfc
+android.hardware.nfc.hce
+android.hardware.screen.landscape
+android.hardware.screen.portrait
+android.hardware.sensor.accelerometer
+android.hardware.sensor.barometer
+android.hardware.sensor.compass
+android.hardware.sensor.gyroscope
+android.hardware.sensor.heartrate
+android.hardware.sensor.hifi_sensors
+android.hardware.sensor.light
+android.hardware.sensor.proximity
+android.hardware.sensor.stepcounter
+android.hardware.sensor.stepdetector
+android.hardware.telephony
+android.hardware.telephony.gsm
+android.hardware.touchscreen
+android.hardware.touchscreen.multitouch
+android.hardware.touchscreen.multitouch.distinct
+android.hardware.touchscreen.multitouch.jazzhand
+android.hardware.usb.accessory
+android.hardware.usb.host
+android.hardware.wifi
+android.hardware.wifi.direct
+android.software.app_widgets
+android.software.backup
+android.software.connectionservice
+android.software.device_admin
+android.software.home_screen
+android.software.input_methods
+android.software.live_wallpaper
+android.software.managed_users
+android.software.midi
+android.software.print
+android.software.sip
+android.software.sip.voip
+android.software.voice_recognizers
+android.software.webview
+com.samsung.android.feature.sdl.2301
+com.samsung.android.sdk.camera.ipx
+com.samsung.android.sdk.camera.processor
+com.samsung.android.sdk.camera.processor.dof
+com.samsung.android.sdk.camera.processor.effect
+com.samsung.android.sdk.camera.processor.hdr
+com.samsung.android.sdk.camera.processor.lls
+com.samsung.android.sdk.camera.processor.panorama
+com.samsung.feature.hmt
+com.samsung.feature.mirrorlink_fw
+com.samsung.feature.virtualscreen
+com.sec.android.mdm
+com.sec.android.secimaging
+com.sec.android.smartface.smart_stay
+com.sec.feature.barcode_emulator
+com.sec.feature.call_vt_support
+com.sec.feature.cocktailpanel
+com.sec.feature.cover.clearcover
+com.sec.feature.cover.flip
+com.sec.feature.cover.nfc_authentication
+com.sec.feature.cover.nfcledcover
+com.sec.feature.cover.sview
+com.sec.feature.cover.sviewcover
+com.sec.feature.findo
+com.sec.feature.fingerprint_manager_service
+com.sec.feature.minimode
+com.sec.feature.motionrecognition_service
+com.sec.feature.multiwindow
+com.sec.feature.multiwindow.commonui
+com.sec.feature.multiwindow.freestyle
+com.sec.feature.multiwindow.freestylelaunch
+com.sec.feature.multiwindow.minimizeanimation
+com.sec.feature.multiwindow.multiinstance
+com.sec.feature.multiwindow.multiwindowlaunch
+com.sec.feature.multiwindow.phone
+com.sec.feature.multiwindow.recentui
+com.sec.feature.multiwindow.scalewindow
+com.sec.feature.multiwindow.selective1orientation
+com.sec.feature.multiwindow.simplificationui
+com.sec.feature.multiwindow.styletransition
+com.sec.feature.nsflp
+com.sec.feature.overlaymagnifier
+com.sec.feature.people_edge_notification
+com.sec.feature.secretmode_service
+com.sec.feature.sensorhub
+com.sec.feature.slocation
+com.sec.feature.snote
+com.sec.feature.spo2
+com.sec.feature.wfd_support
+
+<<< CPU >>>
+
+SoC Model: Samsung Exynos 8 Octa (8890)
+Core Architecture: 4x ARM Cortex-A53 @ 1586 MHz
+4x Samsung Exynos M1 @ 2600 MHz
+Manufacturing Process: 14 nm
+Instruction Set: 64-bit ARMv8-A
+CPU Revision: r1p1
+CPU Cores: 8
+CPU Clock Range: 442 - 2600 MHz
+Core 1 Clock: 1274 MHz
+Core 2 Clock: 1274 MHz
+Core 3 Clock: 1274 MHz
+Core 4 Clock: 1274 MHz
+Core 5 Clock: 728 MHz
+Core 6 Clock: 728 MHz
+Core 7 Clock: (sleeping)
+Core 8 Clock: (sleeping)
+CPU Utilization: 8 %
+Scaling Governor: interactive
+Supported ABIs: arm64-v8a, armeabi-v7a, armeabi
+Supported 32-bit ABIs: armeabi-v7a, armeabi
+Supported 64-bit ABIs: arm64-v8a
+AES: Supported
+NEON: Supported
+SHA1: Supported
+SHA2: Supported
+
+<<< Display >>>
+
+Screen Resolution: 1440 × 2560
+Technology: Super AMOLED
+Screen Size: 68 mm × 122 mm
+Screen Diagonal: 5.5 inches
+Pixel Density: 534 dpi
+xdpi / ydpi: 538 / 533 dpi
+GPU Vendor: ARM
+GPU Renderer: Mali-T880
+GPU Cores: 12
+Current GPU Clock: 260 MHz
+GPU Clock Range: 260 - 650 MHz
+GPU Utilization: 0 %
+Refresh Rate: 59 Hz
+Default Orientation: Portrait
+OpenGL ES Version: 3.1
+GPU Version: OpenGL ES 3.1 v1.r9p0-12dev0.c2bae768d87bf40047e1f310c8de7f16
+OpenGL ES Extensions: GL_EXT_debug_marker
+GL_ARM_rgba8
+GL_ARM_mali_shader_binary
+GL_OES_depth24
+GL_OES_depth_texture
+GL_OES_depth_texture_cube_map
+GL_OES_packed_depth_stencil
+GL_OES_rgb8_rgba8
+GL_EXT_read_format_bgra
+GL_OES_compressed_paletted_texture
+GL_OES_compressed_ETC1_RGB8_texture
+GL_OES_standard_derivatives
+GL_OES_EGL_image
+GL_OES_EGL_image_external
+GL_OES_EGL_sync
+GL_OES_texture_npot
+GL_OES_vertex_half_float
+GL_OES_required_internalformat
+GL_OES_vertex_array_object
+GL_OES_mapbuffer
+GL_EXT_texture_format_BGRA8888
+GL_EXT_texture_rg
+GL_EXT_texture_type_2_10_10_10_REV
+GL_OES_fbo_render_mipmap
+GL_OES_element_index_uint
+GL_EXT_shadow_samplers
+GL_OES_texture_compression_astc
+GL_KHR_texture_compression_astc_ldr
+GL_KHR_texture_compression_astc_hdr
+GL_KHR_debug
+GL_EXT_occlusion_query_boolean
+GL_EXT_disjoint_timer_query
+GL_EXT_blend_minmax
+GL_EXT_discard_framebuffer
+GL_OES_get_program_binary
+GL_OES_texture_3D
+GL_EXT_texture_storage
+GL_EXT_multisampled_render_to_texture
+GL_OES_surfaceless_context
+GL_OES_texture_stencil8
+GL_EXT_shader_pixel_local_storage
+GL_ARM_shader_framebuffer_fetch
+GL_ARM_shader_framebuffer_fetch_depth_stencil
+GL_ARM_mali_program_binary
+GL_EXT_sRGB
+GL_EXT_sRGB_write_control
+GL_EXT_texture_sRGB_decode
+GL_KHR_blend_equation_advanced
+GL_KHR_blend_equation_advanced_coherent
+GL_OES_texture_storage_multisample_2d_array
+GL_OES_shader_image_atomic
+GL_EXT_robustness
+GL_EXT_draw_buffers_indexed
+GL_OES_draw_buffers_indexed
+GL_EXT_texture_border_clamp
+GL_OES_texture_border_clamp
+GL_EXT_texture_cube_map_array
+GL_OES_texture_cube_map_array
+GL_OES_sample_variables
+GL_OES_sample_shading
+GL_OES_shader_multisample_interpolation
+GL_EXT_shader_io_blocks
+GL_OES_shader_io_blocks
+GL_EXT_tessellation_shader
+GL_OES_tessellation_shader
+GL_EXT_primitive_bounding_box
+GL_OES_primitive_bounding_box
+GL_EXT_geometry_shader
+GL_OES_geometry_shader
+GL_ANDROID_extension_pack_es31a
+GL_EXT_gpu_shader5
+GL_OES_gpu_shader5
+GL_EXT_texture_buffer
+GL_OES_texture_buffer
+GL_EXT_copy_image
+GL_OES_copy_image
+GL_EXT_color_buffer_half_float
+GL_EXT_color_buffer_float
+GL_OVR_multiview
+GL_OVR_multiview2
+GL_OVR_multiview_multisampled_render_to_texture
+
+<<< Network >>>
+
+<< Telephony >>
+Phone Type: GSM
+Network Operator Name: Personal
+Network Operator Code: 72234
+Network Operator Country: Argentina
+SIM Provider Name: Personal
+SIM Provider Code: 72234
+SIM Provider Country: Argentina
+SIM State: Ready
+Network Type: HSUPA
+Data Connection State: Disconnected
+Data Activity: None
+Device Is Roaming: No
+ICC Card: Present
+
+<< Wi-Fi >>
+State: Enabled
+SSID: "FevaX"
+BSSID: 00:11:22:33:44:55
+Hidden SSID: No
+IP Address: 192.168.1.102
+Signal Strength: -31 dBm (Excellent)
+Link Speed: 24 Mbps
+Frequency: 2462 MHz
+Network ID: 4
+Gateway: 192.168.1.1
+Netmask: 255.255.255.0
+DNS1: 192.168.1.1
+DHCP Lease Duration: 262800 hours
+5 GHz Band: Not Supported
+Wi-Fi Direct: Supported
+
+<<< Battery >>>
+
+Power Source: Battery
+Level: 60 %
+Status: Discharging
+Health: Good
+Technology: Li-ion
+Temperature: 24.3°C
+Voltage: 3.891 V
+Discharge Rate: 227 mA
+Capacity: 3600 mAh
+
+<<< Android >>>
+
+Android Version: 6.0.1 (Marshmallow)
+API Level: 23
+Android Security Patch Level: 2016-04-02
+Rooted Device: Yes
+Android ID: d25306299a6f1f76
+Bootloader: G935FXXU1APD1
+Build ID: MMB29K.G935FXXU1APD1
+Codename: REL
+Fingerprint: samsung/hero2ltexx/hero2lte:6.0.1/MMB29K/G935FXXU1APD1:user/release-keys
+ID: MMB29K
+Incremental: G935FXXU1APD1
+Java Runtime Version: Android Runtime 0.9
+Java VM Version: ART 2.1.0
+Java VM Heap Size: 256 MB
+Kernel Architecture: armv8l
+Kernel Version: 3.18.14-7538748 (dpi@SWDD6418) (gcc version 4.9.x-google 20140827 (prerelease) (GCC) ) #1 SMP PREEMPT Fri Apr 1 20:50:31 KST 2016
+Tags: release-keys
+Type: user
+Google Play Services Version: 9.0.83 (440-121911109)
+OpenSSL Version: BoringSSL
+ZLib Version: 1.2.8
+ICU CLDR Version: 27.0.1
+ICU Library Version: 55.1
+ICU Unicode Version: 7.0
+Android Language: Spanish (Spain)
+Configured Time Zone: Argentina Standard Time (UTC-03:00)
+UpTime: 13:54:55
+
+<<< Devices >>>
+
+<< Rear-Facing Camera >>
+Camera ID: SLSI_S5K2L1_FIMC_IS
+Resolution: 12.2 MP (4032 × 3024)
+Video Resolution: 8.3 MP (3840 × 2160)
+Focal Length: 4.2 mm
+Focus Modes: auto, infinity, macro, continuous-video, continuous-picture
+Video Snapshot: Supported
+Video Stabilization: Supported
+Zoom: Supported
+Smooth Zoom: Not Supported
+Auto Exposure Locking: Supported
+Auto White Balance Locking: Supported
+Flash: Supported
+
+<< Front-Facing Camera >>
+Camera ID: SLSI_S5K4E6_FIMC_IS
+Resolution: 5.0 MP (2592 × 1944)
+Video Resolution: 3.7 MP (2560 × 1440)
+Focal Length: 2.1 mm
+Focus Modes: fixed, infinity
+Video Snapshot: Supported
+Video Stabilization: Not Supported
+Zoom: Supported
+Smooth Zoom: Not Supported
+Auto Exposure Locking: Supported
+Auto White Balance Locking: Supported
+Flash: Not Supported
+
+<< OpenCL Device - Mali-T880 >>
+Device Name: Mali-T880
+Device Type: GPU
+Device Vendor: ARM
+Device Vendor ID: 0x08802000
+Device Version: OpenCL 1.2 v1.r9p0-12dev0.c2bae768d87bf40047e1f310c8de7f16
+Device Profile: Full
+Driver Version: 1.2
+OpenCL C Version: OpenCL C 1.2 v1.r9p0-12dev0.c2bae768d87bf40047e1f310c8de7f16
+Clock Rate: 650 MHz
+Compute Units: 12
+Address Space Size: 64-bit
+Max 2D Image Size: 65536 × 65536
+Max 3D Image Size: 65536 × 65536 × 65536
+Max Image Array Size: 2048
+Max Image Buffer Size: 65536
+Max Samplers: 16
+Max Work-Item Size: 256 × 256 × 256
+Max Work-Group Size: 256
+Max Argument Size: 1 KB
+Max Constant Buffer Size: 64 KB
+Max Constant Arguments: 8
+Max Printf Buffer Size: 1 MB
+Native ISA Vector Widths: char16, short8, int4, long2, half8, float4, double2
+Preferred Native Vector Widths: char16, short8, int4, long2, half8, float4, double2
+Profiling Timer Resolution: 1000 ns
+OpenCL Library: /system/vendor/lib/libOpenCL.so
+Global Memory: 2 GB
+Global Memory Cache: 512 KB  (Read/Write, 64-byte line)
+Local Memory: 32 KB
+Max Memory Object Allocation Size: 512 MB
+Memory Base Address Alignment: 1024-bit
+Min Data Type Alignment: 128 bytes
+Command-Queue Out Of Order Execution: Enabled
+Command-Queue Profiling: Enabled
+Compiler Available: Yes
+Error Correction: Not Supported
+Images: Supported
+Kernel Execution: Supported
+Linker Available: Yes
+Little-Endian Device: Yes
+Native Kernel Execution: Not Supported
+SVM Atomics: Not Supported
+SVM Coarse Grain Buffer: Not Supported
+SVM Fine Grain Buffer: Not Supported
+SVM Fine Grain System: Not Supported
+Unified Memory: Yes
+OpenCL Extensions: cl_khr_global_int32_base_atomics
+cl_khr_global_int32_extended_atomics
+cl_khr_local_int32_base_atomics
+cl_khr_local_int32_extended_atomics
+cl_khr_byte_addressable_store
+cl_khr_3d_image_writes
+cl_khr_fp64
+cl_khr_int64_base_atomics
+cl_khr_int64_extended_atomics
+cl_khr_fp16
+cl_khr_gl_sharing
+cl_khr_icd
+cl_khr_egl_event
+cl_khr_egl_image
+cl_arm_core_id
+cl_arm_printf
+cl_arm_thread_limit_hint
+cl_arm_non_uniform_work_group_size
+cl_arm_import_memory
+
+<< PCI Devices >>
+B00-D00-F00: 144D-A544
+B01-D00-F00: 14E4-4415
+
+No USB devices found.
+No CUDA devices found.
+
+<<< Thermal >>>
+
+max77854-fuelgauge: 24.2°C
+therm_zone0: 29.0°C
+therm_zone1: 30.0°C
+therm_zone2: 29.0°C
+therm_zone3: 30.0°C
+therm_zone4: 29.0°C
+ac: 24.7°C
+battery: 24.3°C
+Battery: 24.3°C
+
+<<< Sensors >>>
+
+K6DS3TR Acceleration Sensor: 
+K6DS3TR Gyroscope Sensor: 
+K6DS3TR Gyroscope sensor UnCalibrated: 
+Interrupt Gyroscope Sensor: 
+YAS537 Magnetic Sensor: 
+YAS537 Uncalibrated Magnetic Sensor: 
+LPS25H Barometer Sensor: 
+TMD4903 Proximity Sensor: 8.0 cm
+TMD4093 RGB Sensor: 
+TMD4093 RGB IR Sensor: 
+SAMSUNG Step Detector Sensor: 
+SAMSUNG Step Counter Sensor: 
+SAMSUNG Significant Motion Sensor: 
+Grip Sensor: 
+Samsung Rotation Vector: 
+Samsung Game Rotation Vector: 
+SAMSUNG Tilt Detector: 
+SAMSUNG Pick Up Gesture: 
+Screen Orientation Sensor: 
+Orientation Sensor: 
+Gravity Sensor: 
+Linear Acceleration Sensor: 
+
+<<< Apps >>>
+
+AdAway: org.adaway(v3.1.1)
+AIDA64: com.finalwire.aida64(v1.36)
+Ampere: com.gombosdev.ampere(vv2.00.2 Beta)
+Asphalt 8: com.gameloft.android.ANMP.GloftA8HM(v2.4.0h)
+Clean Master: com.cleanmaster.mguard(v5.12.2)
+com.BPMDetector2: com.BPMDetector2(v2.0)
+CPU-Z: com.cpuid.cpu_z(v1.19)
+Cámara dual: com.sec.android.app.camera.shootingmode.dual(v3.006)
+Cámara FV-5: com.flavionet.android.camera.pro(v3.15.1)
+DaTuner Lite: com.bork.dsp.datuna(v3.72)
+Facebook: com.facebook.katana(v77.0.0.0.45)
+Farm Heroes Saga: com.king.farmheroessaga(v2.51.8)
+Fing - Network Tools: com.overlook.android.fing(v3.03)
+Foap: com.foap.android(v3.3.0.365)
+Google Play Juegos: com.google.android.play.games(v3.7.22 (2779566-040))
+Greenify: com.oasisfeng.greenify(v2.8.1)
+ILRemote: com.imageline.ILRemote(v1.2.5)
+Magic Piano: com.smule.magicpiano(v2.4.3)
+Meme Generator: com.zombodroid.MemeGeneratorFullGplay(v4.009)
+Messenger Enabler: com.facebook.orca(v1.0)
+Mi Cuenta Personal: ar.com.personal(v3.8.8)
+MSQRD: me.msqrd.android(v1.5.1)
+Piano Tiles 2: com.cmplay.tiles2(v1.2.0.913)
+Root Explorer: com.speedsoftware.rootexplorer(v4.0.1)
+SD Maid: eu.thedarken.sdm(v4.1.3)
+Snapseed: com.niksoftware.snapseed(v2.4.0.120213471)
+SoundHound: com.melodis.midomiMusicIdentifier.freemium(v7.1.0)
+Speedtest: org.zwanoo.android.speedtest(v3.2.18)
+Storage Space: com.cls.partition(v4.2.8)
+SuperSU: eu.chainfire.supersu(v2.72)
+SwiftKey Teclado: com.touchtype.swiftkey(v6.3.3.66)
+Telegram: org.telegram.messenger(v3.9.0)
+Titanium Backup: com.keramidas.TitaniumBackup(v7.4.0-test1)
+Tumblr: com.tumblr(v6.0.1.00)
+Twitter: com.twitter.android(v5.109.0)
+VLC: org.videolan.vlc(v1.7.5)
+Weather & Clock Widget: com.devexpert.weather(v5.8.1.3)
+
+<<< Codecs >>>
+
+OMX.SEC.amr.dec: audio/3gpp
+audio/amr-wb
+OMX.SEC.mp3.dec: audio/mpeg
+audio/mpeg-L1
+audio/mpeg-L2
+OMX.SEC.aac.dec: audio/mp4a-latm
+OMX.SEC.flac.dec: audio/flac
+OMX.SEC.wma.dec: audio/x-ms-wma
+OMX.SEC.adpcm.dec: audio/x-ima
+OMX.Exynos.mpeg4.dec: video/mp4v-es
+OMX.Exynos.h263.dec: video/3gpp
+OMX.Exynos.avc.dec: video/avc
+OMX.Exynos.vp8.dec: video/x-vnd.on2.vp8
+OMX.Exynos.hevc.dec: video/hevc
+OMX.Exynos.vp9.dec: video/x-vnd.on2.vp9
+OMX.Exynos.vc1.dec: video/wvc1
+video/x-ms-wmv
+OMX.SEC.h263.sw.dec: video/3gpp
+OMX.SEC.avc.sw.dec: video/avc
+OMX.SEC.mpeg4.sw.dec: video/mp4v-es
+OMX.SEC.vc1.sw.dec: video/wvc1
+video/x-ms-wmv
+OMX.SEC.wmv7.dec: video/x-ms-wmv7
+OMX.SEC.wmv8.dec: video/x-ms-wmv8
+OMX.SEC.mp43.dec: video/mp43
+OMX.SEC.vp8.dec: video/x-vnd.on2.vp8
+OMX.Exynos.AVC.Encoder: video/avc
+OMX.Exynos.H263.Encoder: video/3gpp
+OMX.Exynos.MPEG4.Encoder: video/mp4v-es
+OMX.Exynos.VP8.Encoder: video/x-vnd.on2.vp8
+OMX.Exynos.HEVC.Encoder: video/hevc
+OMX.Exynos.VP9.Encoder: video/x-vnd.on2.vp9
+OMX.google.mpeg4.decoder: video/mp4v-es
+OMX.google.h263.decoder: video/3gpp
+OMX.google.h264.decoder: video/avc
+OMX.google.hevc.decoder: video/hevc
+OMX.google.vp8.decoder: video/x-vnd.on2.vp8
+OMX.google.vp9.decoder: video/x-vnd.on2.vp9
+OMX.google.h263.encoder: video/3gpp
+OMX.google.h264.encoder: video/avc
+OMX.google.mpeg4.encoder: video/mp4v-es
+OMX.google.vp8.encoder: video/x-vnd.on2.vp8
+OMX.SEC.hevc.sw.dec: video/hevc
+OMX.google.mp3.decoder: audio/mpeg
+OMX.google.amrnb.decoder: audio/3gpp
+OMX.google.amrwb.decoder: audio/amr-wb
+OMX.google.aac.decoder: audio/mp4a-latm
+OMX.google.g711.alaw.decoder: audio/g711-alaw
+OMX.google.g711.mlaw.decoder: audio/g711-mlaw
+OMX.google.vorbis.decoder: audio/vorbis
+OMX.google.opus.decoder: audio/opus
+OMX.google.raw.decoder: audio/raw
+OMX.google.aac.encoder: audio/mp4a-latm
+OMX.google.amrnb.encoder: audio/3gpp
+OMX.google.amrwb.encoder: audio/amr-wb
+OMX.google.flac.encoder: audio/flac
+OMX.google.gsm.decoder: audio/gsm
+OMX.SEC.naac.enc: audio/mp4a-latm
+OMX.SEC.h263sr.dec: video/sorenson
+
+<<< Directories >>>
+
+Data: /data
+Root: /system
+Java Home: /system
+Download/Cache Content: /cache
+
+<< External Storage >>
+Primary External Storage: /storage/emulated/0
+External Files #1: /storage/emulated/0/Android/data/com.finalwire.aida64/files
+DCIM: /storage/emulated/0/DCIM
+Downloads: /storage/emulated/0/Download
+Movies: /storage/emulated/0/Movies
+Music: /storage/emulated/0/Music
+Pictures: /storage/emulated/0/Pictures
+
+<< Mount Points >>
+/: Device: rootfs
+File System: rootfs
+Read-Only
+/dev: Device: tmpfs
+File System: tmpfs
+Read-Write
+/dev/pts: Device: devpts
+File System: devpts
+Read-Write
+/dev/cpuctl: Device: none
+File System: cgroup
+Read-Write
+/proc: Device: proc
+File System: proc
+Read-Write
+/sys: Device: sysfs
+File System: sysfs
+Read-Write
+/sys/fs/selinux: Device: selinuxfs
+File System: selinuxfs
+Read-Write
+/sys/kernel/debug: Device: /sys/kernel/debug
+File System: debugfs
+Read-Write
+/sys/fs/cgroup: Device: none
+File System: tmpfs
+Read-Write
+/acct: Device: none
+File System: cgroup
+Read-Write
+/mnt: Device: tmpfs
+File System: tmpfs
+Read-Write
+/mnt/secure: Device: tmpfs
+File System: tmpfs
+Read-Write
+/mnt/secure/asec: Device: tmpfs
+File System: tmpfs
+Read-Write
+/mnt/knox: Device: /data/knox/tmp_sdcard
+File System: sdcardfs
+Read-Write
+/mnt/knox/default/knox-emulated: Device: /data/knox/sdcard
+File System: sdcardfs
+Read-Write
+/mnt/knox/read/knox-emulated: Device: /data/knox/sdcard
+File System: sdcardfs
+Read-Write
+/mnt/knox/write/knox-emulated: Device: /data/knox/sdcard
+File System: sdcardfs
+Read-Write
+/mnt/shell/enc_media: Device: /data/knox/secure_fs/enc_media
+File System: sdcardfs
+Read-Write
+/mnt/runtime/default/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/mnt/runtime/read/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/mnt/runtime/write/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/system: Device: /dev/block/platform/155a0000.ufs/by-name/SYSTEM
+File System: ext4
+Read-Only
+/cache: Device: /dev/block/platform/155a0000.ufs/by-name/CACHE
+File System: ext4
+Read-Write
+/efs: Device: /dev/block/platform/155a0000.ufs/by-name/EFS
+File System: ext4
+Read-Write
+/persdata/absolute: Device: /dev/block/platform/155a0000.ufs/by-name/PERSDATA
+File System: ext4
+Read-Write
+/data: Device: /dev/block/dm-0
+File System: ext4
+Read-Write
+/storage: Device: tmpfs
+File System: tmpfs
+Read-Write
+/storage/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/storage/self: Device: tmpfs
+File System: tmpfs
+Read-Write
+
+<<< System Files >>>
+
+Buddy Info: /proc/buddyinfo
+Build Properties: /system/build.prop
+Character & Block Devices: /proc/devices
+Command Line: /proc/cmdline
+CPU Information: /proc/cpuinfo
+Execution Domains: /proc/execdomains
+File Systems: /proc/filesystems
+Frame Buffer Devices: /proc/fb
+GPS Config: /system/etc/gps.conf
+Hosts: /system/etc/hosts
+Interrupts: /proc/interrupts
+Input Devices: /proc/bus/input/devices
+I/O Ports: /proc/ioports
+Kernel Version: /proc/version
+Load Average: /proc/loadavg
+Locked Files: /proc/locks
+Memory Information: /proc/meminfo
+Memory Map: /proc/iomem
+Misc Drivers: /proc/misc
+Partitions: /proc/partitions
+PCI Devices: /proc/bus/pci/devices
+Statistics: /proc/stat
+Swap Spaces: /proc/swaps

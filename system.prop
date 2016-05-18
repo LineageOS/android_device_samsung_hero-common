@@ -1,0 +1,50 @@
+#
+# system.prop for k3gxx
+#
+
+ro.product.model=SM-G935F
+ro.product.brand=samsung
+ro.product.name=hero2ltexx
+ro.product.device=hero2lte
+ro.product.board=universal8890
+ro.hardware=universal8890
+ro.arch=exynos8890
+ro.chipname=universal8890
+
+# Media
+ro.sf.lcd_density=640
+
+ro.kernel.qemu.gles=1
+persist.demo.hdmirotationlock=false
+
+# read DS/SS property
+import /efs/factory.prop
+ro.multisim.simslotcount=2
+
+# SAMP_SPCM
+sys.config.samp_spcm_enable=true
+sys.config.spcm_db_enable=true
+sys.config.spcm_db_launcher=true
+sys.config.spcm_preload_enable=true
+
+# Radio
+rild.libargs=-d /dev/ttyS0
+rild.libpath=/system/lib/libsec-ril.so
+ro.telephony.ril_class=hero2ltexxRIL
+
+ro.ril.hsxpa=1
+ro.ril.gprsclass=10
+ro.ril.telephony.mqanelements=5
+
+#
+# HWC
+#
+debug.hwc.winupdate=1
+debug.hwc.otf=1
+
+ro.securestorage.support=false
+persist.sys.isUsbOtgEnabled=true
+# Default USB mode
+persist.service.adb.enable=1                                                    
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb

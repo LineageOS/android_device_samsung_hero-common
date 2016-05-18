@@ -1,0 +1,59 @@
+major minor  #blocks  name
+
+   7        0      32768 loop0
+   8        0   31232000 sda
+   8        1       4096 sda1 bota0
+   8        2       4096 sda2 bota1
+   8        3      20480 sda3 efs
+   8        4       8192 sda4 param
+   8        5      40960 sda5 boot
+   8        6      47104 sda6 recovery
+   8        7       8192 sda7 ota
+   8        8      43008 sda8 radio
+   8        9       1024 sda9 tombstones
+   8       10       1024 sda10 dnt
+   8       11        768 sda11 persistent
+   8       12        256 sda12 steady
+   8       13       9216 sda13 persdata 
+   8       14    4403200 sda14 system
+   8       15     204800 sda15 cache
+ 259        0      10240 sda16 hidden
+ 259        1       5120 sda17 cp_debug
+ 259        2   26411008 sda18 userdata
+   8       16       4096 sdb sdcard
+   8       32       4096 sdc external storage
+   8       48       8192 sdd
+   8       49       6144 sdd1
+ 252        0    2097152 vnswap0
+ 253        0   26410992 dm-0
+
+
+127|root@hero2lte:/ # fdisk -l dev/block/sda                                   
+Note: sector size is 4096 (not 512)
+Found valid GPT with protective MBR; using GPT
+
+Disk dev/block/sda: 62464000 sectors, 2336M
+Logical sector size: 4096
+Disk identifier (GUID): 52444e41-494f-2044-4d4d-43204449534b
+Partition table holds up to 128 entries
+First usable sector is 6, last usable sector is 7807994
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            1024            2047       4096K   0700  BOTA0
+   2            2048            3071       4096K   0700  BOTA1
+   3            3072            8191       20.0M   0700  EFS
+   4            8192           10239       8192K   0700  PARAM
+   5           10240           20479       40.0M   0700  BOOT
+   6           20480           32255       46.0M   0700  RECOVERY
+   7           32256           34303       8192K   0700  OTA
+   8           34304           45055       42.0M   0700  RADIO
+   9           45056           45311       1024K   0700  TOMBSTONES
+  10           45312           45567       1024K   0700  DNT
+  11           45568           45759        768K   0700  PERSISTENT
+  12           45760           45823        256K   0700  STEADY
+  13           45824           48127       9216K   0700  PERSDATA
+  14           48128         1148927       4300M   0700  SYSTEM
+  15         1148928         1200127        200M   0700  CACHE
+  16         1200128         1202687       10.0M   0700  HIDDEN
+  17         1202688         1203967       5120K   0700  CP_DEBUG
+  18         1203968         7806719       25.1G   0700  USERDATA
