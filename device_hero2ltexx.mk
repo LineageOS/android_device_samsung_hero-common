@@ -1,10 +1,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
-
+# Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/samsung/hero2ltexx/hero2ltexx-vendor.mk)
 
+# Common Overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/hero2ltexx/overlay
 
 LOCAL_PATH := device/samsung/hero2ltexx
@@ -14,8 +13,16 @@ LOCAL_PATH := device/samsung/hero2ltexx
 ###########################################################
 
 PRODUCT_PACKAGES += \
-fstab.universal8890 \
-
+	fstab.samsungexynos8890 \
+	init.baseband.rc \
+	init.gps.rc \
+	init.rilchip.rc \
+	init.rilcommon.rc \
+	init.wifi.rc \
+	init.samsungexynos8890.usb.rc \
+	init.samsungexynos8890.rc \
+	ueventd.samsungexynos8890.rc \
+	init.sec.boot.sh
 
 ###########################################################
 ### PERMISSONS
@@ -62,7 +69,8 @@ PRODUCT_COPY_FILES += \
 # we do this little trick to fall back to the hdpi version
 # if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
+PRODUCT_AAPT_PREF_CONFIG := 640dpi
+# A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -144,9 +152,9 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio/audio_effects.conf:system/etc/audio_effects.conf \
-	$(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+	$(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
+	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+	$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
@@ -162,8 +170,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
+	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 ###########################################################
 ### POWER
@@ -221,9 +229,9 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/keylayout/gpio_keys_8.kl:system/usr/keylayout/gpio_keys_8.kl \
-	$(LOCAL_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-	$(LOCAL_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:/system/usr/idc/Synaptics_HID_TouchPad.idc
+	$(LOCAL_PATH)/idc/ft5x06_ts.idc:/system/usr/idc/ft5x06_ts.idc \
+	$(LOCAL_PATH)/idc/Synaptics_HID_TouchPad.idc:/system/usr/idc/Synaptics_HID_TouchPad.idc \
+	$(LOCAL_PATH)/idc/Synaptics_RMI4_TouchPad_Sensor.idc:/system/usr/idc/Synaptics_RMI4_TouchPad_Sensor.idc
 
 ###########################################################
 ### CHARGER
@@ -256,42 +264,36 @@ PRODUCT_PACKAGES += \
 	SamsungServiceMode \
 	Torch
 
-###########################################################
-### CONSUMERIR
-###########################################################
-PRODUCT_PACKAGES += \
-    consumerir.universal8890
+#~ ###########################################################
+#~ ### DALVIK/ART
+#~ ###########################################################
 
-###########################################################
-### DALVIK/ART
-###########################################################
+#~ PRODUCT_PROPERTY_OVERRIDES += \
+#~     dalvik.vm.heapstartsize=8m \
+#~     dalvik.vm.heapgrowthlimit=256m \
+#~     dalvik.vm.heapsize=512m \
+#~     dalvik.vm.heaptargetutilization=0.75 \
+#~     dalvik.vm.heapminfree=2m \
+#~     dalvik.vm.heapmaxfree=8m
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=256m \
-    dalvik.vm.heapsize=512m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=2m \
-    dalvik.vm.heapmaxfree=8m
+#~ ###########################################################
+#~ ### HWUI
+#~ ###########################################################
 
-###########################################################
-### HWUI
-###########################################################
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.texture_cache_size=88 \
-	ro.hwui.layer_cache_size=58 \
-	ro.hwui.path_cache_size=16 \
-	ro.hwui.texture_cache_flushrate=0.4 \
-	ro.hwui.shape_cache_size=4 \
-	ro.hwui.gradient_cache_size=2 \
-	ro.hwui.drop_shadow_cache_size=6 \
-	ro.hwui.r_buffer_cache_size=8 \
-	ro.hwui.text_small_cache_width=1024 \
-	ro.hwui.text_small_cache_height=1024 \
-	ro.hwui.text_large_cache_width=4096 \
-	ro.hwui.text_large_cache_height=2048 \
-	ro.hwui.fbo_cache_size=16
+#~ PRODUCT_PROPERTY_OVERRIDES += \
+#~     ro.hwui.texture_cache_size=88 \
+#~ 	ro.hwui.layer_cache_size=58 \
+#~ 	ro.hwui.path_cache_size=16 \
+#~ 	ro.hwui.texture_cache_flushrate=0.4 \
+#~ 	ro.hwui.shape_cache_size=4 \
+#~ 	ro.hwui.gradient_cache_size=2 \
+#~ 	ro.hwui.drop_shadow_cache_size=6 \
+#~ 	ro.hwui.r_buffer_cache_size=8 \
+#~ 	ro.hwui.text_small_cache_width=1024 \
+#~ 	ro.hwui.text_small_cache_height=1024 \
+#~ 	ro.hwui.text_large_cache_width=4096 \
+#~ 	ro.hwui.text_large_cache_height=2048 \
+#~ 	ro.hwui.fbo_cache_size=16
 	
 # Default.prop overrides to get adb working at boot   
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -319,6 +321,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	persist.security.mdm.policy=0 \
 
 $(call inherit-product-if-exists, build/target/product/full.mk)
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
 # call Samsung LSI board support package
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos8890/exynos8890.mk)

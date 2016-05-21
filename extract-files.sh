@@ -24,9 +24,9 @@ BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
 for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
-  #echo "Extracting /system/$FILE ..."
+  echo "Extracting /system/$FILE ..."
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
-  #FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
+  FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
   DEST=${PARSING_ARRAY[1]}
   if [ -z $DEST ]
   then
@@ -37,8 +37,7 @@ for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
     mkdir -p $BASE/$DIR
   fi
   if [ "$SRC" = "adb" ]; then
-    echo "adb pull /system/${FILE} ${BASE}/${DEST}"
-	
+    adb pull /system/$FILE $BASE/$DEST
   # if file dot not exist try destination
     if [ "$?" != "0" ]
         then

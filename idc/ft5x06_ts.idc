@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +11,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+#
+# Input Device Calibration File for the touch screen.
 #
 
-LOCAL_PATH := $(call my-dir)
+device.internal = 1
 
-ifeq ($(TARGET_DEVICE),hero2ltexx)
+touch.deviceType = touchScreen
+touch.orientationAware = 1
 
-include $(CLEAR_VARS)
+touch.size.calibration = area
+touch.size.scale = 52
+touch.size.bias = 11.8
+touch.size.isSummed = 0
 
-ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
+touch.pressure.calibration = amplitude
+touch.pressure.scale = 0.015
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
-endif
+touch.orientation.calibration = vector

@@ -16,12 +16,14 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),hero2ltexx)
-
 include $(CLEAR_VARS)
 
-ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
+# GPS
+include $(CLEAR_VARS)
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
+LOCAL_SRC_FILES := samsung_gps.cpp
+LOCAL_SHARED_LIBRARIES := libbinder liblog libcutils libgui libutils
+LOCAL_MODULE := libshim_gps
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
-endif
+include $(BUILD_SHARED_LIBRARY)
