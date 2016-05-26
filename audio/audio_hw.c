@@ -299,6 +299,8 @@ static void select_devices(struct audio_device *adev)
     int input_source_id = get_input_source_id(adev->input_source, adev->wb_amr);
     const char *output_route = NULL;
     const char *input_route = NULL;
+    char output_gain[64] = {0};
+    char input_gain[64] = {0};
     int new_route_id;
 
     audio_route_reset(adev->ar);
@@ -340,11 +342,28 @@ static void select_devices(struct audio_device *adev)
           output_route ? output_route : "none",
           input_route ? input_route : "none");
 
-    if (output_route)
+    if (output_route) {
         audio_route_apply_path(adev->ar, output_route);
-    if (input_route)
+
+        snprintf(output_gain,
+                 sizeof(output_gain),
+                 "gain-%s",
+                 output_route);
+        audio_route_apply_path(adev->ar, output_gain);
+        ALOGV("%s: Applying gain [%s] for route [%s]", __func__,
+              output_gain, output_route);
+    }
+    if (input_route) {
         audio_route_apply_path(adev->ar, input_route);
 
+        snprintf(input_gain,
+                 sizeof(input_gain),
+                 "gain-%s",
+                 input_route);
+        audio_route_apply_path(adev->ar, input_gain);
+        ALOGV("%s: Applying gain [%s] for route [%s]", __func__,
+              input_gain, input_route);
+    }
     audio_route_update_mixer(adev->ar);
 
     /* FIXME: Turn on two mic control for earpiece and speaker */
