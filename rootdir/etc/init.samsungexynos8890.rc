@@ -11,6 +11,7 @@ on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 on init
+	export LD_SHIM_LIBS "/system/lib64/hw/hwcomposer.exynos5.so|/system/lib64/libsamsung_symbols.so"
     start watchdogd
     mkdir /preload 0771 system system
 
@@ -271,6 +272,18 @@ on boot
     chown system system /sys/power/call_state
     chmod 660 /sys/power/call_state
 
+# mobicore
+    mkdir /data/app/mcRegistry 0775 system system
+    chmod 0700 /dev/mobicore
+    chmod 0666 /dev/mobicore-user
+    chmod 0660 /dev/s5p-smem
+    chmod 0660 /dev/t-base-tui
+    chown system system /dev/s5p-smem
+    chown system system /dev/t-base-tui
+    chown system system /dev/mobicore
+    chown radio system /dev/mobicore-user
+    export MC_AUTH_TOKEN_PATH /efs
+
 # Switch Device
     chown system radio /sys/class/sec/switch/afc_disable
 
@@ -322,7 +335,6 @@ service ipsec-daemon /system/bin/IPSecService
 
 on fs
     mount_all /fstab.samsungexynos8890
-    setprop ro.crypto.fuse_sdcard true
 
 #For Absolute Persistence Partition
     mkdir /persdata 0755 system system
@@ -628,19 +640,13 @@ service vcsFPService /system/bin/vcsFPService
 service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
-    group system
+    group input
 
 # Copy DRM Key
     copy /system/app/wv.keys /factory/wv.keys
 
 # Permission for DRM Key
     chmod 0644 /factory/wv.keys
-
-# MobiCore startup
-# service mobicore /system/bin/mcDriverDaemon -r /system/app/020a0000000000000000000000000000.drbin -r /system/app/mcRegistry/FFFFFFFFD00000000000000000000016.tlbin
-#     user drmrpc
-#     group drmrpc
-#     class core
 
 # RPMB
 	service rpmbd /system/bin/rpmbd
@@ -704,13 +710,8 @@ service cs_service /system/bin/cs
     user system
     group system
     disabled
-
-on property:ro.crypto.default.encrypted=true
-    start cs_service
-
 on property:sys.mobicoredaemon.enable=true
     start cs_service
-    write /proc/iccc_ready 1
 
 on property:sys.boot_completed=1
     setprop security.semdaemonfinish 0
