@@ -116,6 +116,9 @@
 /dev/video231             0660   media      media
 /dev/media2               0660   media      media
 
+# Secure MEM driver
+/dev/s5p-smem             0660   system     system
+
 # jpeg
 /dev/m2m1shot_jpeg	  0660   media      media
 /dev/video12              0660   media      media
@@ -154,6 +157,17 @@
 /sys/devices/14d30000.spi/spi_master/spi1/spi1.0/iio:device*    buffer/enable       0660    system    system
 /sys/devices/14d30000.spi/spi_master/spi1/spi1.0/iio:device*    buffer/length       0660    system    system
 /sys/bus/iio/devices/iio:device*    0664   system     radio
+
+# MobiCore
+/dev/mobicore             0700   system     system
+/dev/mobicore-user        0666   radio     system
+
+# Secure MEM driver
+/dev/s5p-smem             0660   system     system
+
+# FINGERPRINT
+/dev/vfsspi               0660   system     system
+/dev/esfp0                0660   system     system
 
 # Broadcom Sensorhub Bridge Driver
 /dev/bbd_sensor           0660   system     system
