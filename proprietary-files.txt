@@ -136,8 +136,8 @@ vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 # Camera
 #lib/hw/camera.exynos5.so
 #lib64/hw/camera.exynos5.so
-#lib/hw/camera.universal7420.so
-#lib64/hw/camera.universal7420.so
+#lib/hw/camera.universal8890.so
+#lib64/hw/camera.universal8890.so
 lib/libexynoscamera3.so
 lib64/libexynoscamera3.so
 lib/libexynoscamera.so
@@ -164,22 +164,22 @@ lib/hw/fingerprint.default.so
 lib64/hw/fingerprint.default.so
 
 # Graphics
-lib/hw/gralloc.exynos5.so
-lib64/hw/gralloc.exynos5.so
-lib/hw/hwcomposer.exynos5.so
-lib64/hw/hwcomposer.exynos5.so
-lib/libexynosgscaler.so
-lib/libexynosscaler.so
-lib/libexynosutils.so
-lib64/libexynosgscaler.so
-lib64/libexynosscaler.so
-lib64/libexynosutils.so
+#lib/hw/gralloc.exynos5.so
+#lib64/hw/gralloc.exynos5.so
+#lib/hw/hwcomposer.exynos5.so
+#lib64/hw/hwcomposer.exynos5.so
+#lib/libexynosgscaler.so
+#lib/libexynosscaler.so
+#lib/libexynosutils.so
+#lib64/libexynosgscaler.so
+#lib64/libexynosscaler.so
+#lib64/libexynosutils.so
 vendor/lib/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_mali.so
 
 # GPS
 #manually
-bin/lhd 
+#bin/lhd 
 
 # Memory
 lib/libion.so
@@ -308,6 +308,19 @@ etc/wifi/olsrd.conf
 etc/wifi/p2p_supplicant_overlay.conf
 etc/wifi/wpa_supplicant.conf
 etc/wifi/wpa_supplicant_overlay.conf
+
+##TEST
+#Graphics
+#lib/libvirtualdisplay.so
+#lib64/libvirtualdisplay.so
+#lib/libExynosHWCService.so
+#lib64/libExynosHWCService.so
+#lib/libdisplay.so
+#lib/libhdmi.so
+#lib/libhwcutils.so
+#lib64/libdisplay.so
+#lib64/libhdmi.so
+#lib64/libhwcutils.so
 
 vendor/etc/nxp/AzControlParams_SPEAKER.txt
 vendor/etc/nxp/LVAZFS_Configuration.txt
