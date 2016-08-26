@@ -8,6 +8,7 @@ vendor/firmware/bcm4359C0_V0028.0049_semco.hcd
 vendor/firmware/bcm4359C0_V0028.0050_murata.hcd
 
 # Mobicore
+app/FFFFFFFF000000000000000000000001.drbin
 app/mcRegistry/00060308060501020000000000000000.tlbin
 app/mcRegistry/07010000000000000000000000000000.tlbin
 app/mcRegistry/07060000000000000000000000000000.tlbin
@@ -160,22 +161,37 @@ lib/libsynaFpSensorTestNwd.so
 lib64/libsynaFpSensorTestNwd.so
 lib/libegis_fp_normal_sensor_test.so
 lib64/libegis_fp_normal_sensor_test.so
-lib/hw/fingerprint.default.so
-lib64/hw/fingerprint.default.so
+lib/hw/fingerprint.universal8890.so
+lib64/hw/fingerprint.universal8890.so
 
 # Graphics
-#lib/hw/gralloc.exynos5.so
-#lib64/hw/gralloc.exynos5.so
-#lib/hw/hwcomposer.exynos5.so
-#lib64/hw/hwcomposer.exynos5.so
-#lib/libexynosgscaler.so
-#lib/libexynosscaler.so
-#lib/libexynosutils.so
-#lib64/libexynosgscaler.so
-#lib64/libexynosscaler.so
-#lib64/libexynosutils.so
+lib/hw/gralloc.exynos5.so
+lib64/hw/gralloc.exynos5.so
+lib/hw/hwcomposer.exynos5.so
+lib64/hw/hwcomposer.exynos5.so
+lib/libexynosgscaler.so
+lib/libexynosscaler.so
+lib/libexynosutils.so
+lib64/libexynosgscaler.so
+lib64/libexynosscaler.so
+lib64/libexynosutils.so
 vendor/lib/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_mali.so
+
+##TEST
+#Graphics
+lib/libvirtualdisplay.so
+lib64/libvirtualdisplay.so
+lib/libExynosHWCService.so
+lib64/libExynosHWCService.so
+lib/libdisplay.so
+lib/libhdmi.so
+lib/libhwcutils.so
+lib/libfimg.so
+lib64/libdisplay.so
+lib64/libhdmi.so
+lib64/libhwcutils.so
+lib64/libfimg.so
 
 # GPS
 #manually
@@ -262,12 +278,14 @@ lib/libtlc_tz_keystore.so
 lib64/libtlc_tz_keystore.so
 
 # Widevine
-#vendor/lib/drm/libdrmwvmplugin.so
-#vendor/lib/libdrmdecrypt.so
-#vendor/lib/libwvdrm_L1.so
-#vendor/lib/libwvm.so
-#vendor/lib/libWVStreamControlAPI_L1.so
-#vendor/lib/mediadrm/libwvdrmengine.so
+lib/liboemcrypto.so
+lib/libstagefright_hdcp.so
+vendor/lib/mediadrm/libwvdrmengine.so
+#~ lib/libdrmdecrypt.so
+#~ lib/drm/libdrmwvmplugin.so
+#~ vendor/lib/libWVStreamControlAPI_L1.so
+#~ vendor/lib/libwvdrm_L1.so
+#~ vendor/lib/libwvm.so
 
 # Wifi
 etc/wifi/bcmdhd_apsta.bin_b1
@@ -308,19 +326,6 @@ etc/wifi/olsrd.conf
 etc/wifi/p2p_supplicant_overlay.conf
 etc/wifi/wpa_supplicant.conf
 etc/wifi/wpa_supplicant_overlay.conf
-
-##TEST
-#Graphics
-#lib/libvirtualdisplay.so
-#lib64/libvirtualdisplay.so
-#lib/libExynosHWCService.so
-#lib64/libExynosHWCService.so
-#lib/libdisplay.so
-#lib/libhdmi.so
-#lib/libhwcutils.so
-#lib64/libdisplay.so
-#lib64/libhdmi.so
-#lib64/libhwcutils.so
 
 vendor/etc/nxp/AzControlParams_SPEAKER.txt
 vendor/etc/nxp/LVAZFS_Configuration.txt
