@@ -24,6 +24,7 @@
 
     LbsEnable="true"
     LbsServer="BCMLS2.glpals.com"
+    RtiConfig="gllto.glpals.com:80/rtistatus3.dat"
     HttpSyncLto="true"
     LbsCellEnable="false"
     LtoDir="/data/system/gps/"
