@@ -64,6 +64,9 @@ BOARD_OVERRIDE_RS_CPU_VARIANT_64 := exynos-m1
 # SELinux
 BOARD_SEPOLICY_DIRS := device/samsung/hero-common/sepolicy
 
+# SECComp filters
+BOARD_SECCOMP_POLICY += device/samsung/hero-common/seccomp
+
 # Inherit board specific defines
 -include device/samsung/hero-common/board/*.mk
 
