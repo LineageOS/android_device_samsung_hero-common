@@ -25,11 +25,18 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 
 ENABLE_CPUSETS := true
 
+WITH_DEXPREOPT := true
+
+# Renderscript
+BOARD_OVERRIDE_RS_CPU_VARIANT_32 := cortex-a53
+BOARD_OVERRIDE_RS_CPU_VARIANT_64 := cortex-a57
+
 # Binder
 TARGET_USES_64_BIT_BINDER := true
 
 # no hardware camera
 USE_CAMERA_STUB := true
+BOARD_USE_SAMSUNG_CAMERAFORMAT_NV21 := true
 
 # Bootloader
 TARGET_OTA_ASSERT_DEVICE := hero2lte,hero2ltexx
@@ -99,7 +106,6 @@ BOARD_NFC_HAL_SUFFIX := universal8890
 
 # Graphics
 USE_OPENGL_RENDERER := true
-DEFAULT_FB_NUM := 0
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 5
 ENABLE_WEBGL := true
 
@@ -115,14 +121,16 @@ BOARD_USE_CSC_HW := true
 BOARD_USE_QOS_CTRL := false
 BOARD_USE_VP8ENC_SUPPORT := true
 
-BOARD_USES_HWC_SERVICES := true
-
-BOARD_USES_GSC_VIDEO := true
+# (G)SCALER
 BOARD_USES_SCALER := true
 BOARD_USES_DT := true
 
-BOARD_NEEDS_MEMORYHEAPION := true
+#~ BOARD_USES_HWC_SERVICES := true
+#~ BOARD_USES_GSC_VIDEO := true
 
+#Fix for gralloc & pixelformat
+BOARD_USE_BGRA_8888 := true
+BOARD_NEEDS_MEMORYHEAPION := true
 EXYNOS5_ENHANCEMENTS := true
 
 ifdef EXYNOS5_ENHANCEMENTS
@@ -132,8 +140,9 @@ endif
 # Samsung LSI OpenMAX
 COMMON_GLOBAL_CFLAGS += -DUSE_NATIVE_SEC_NV12TILED
 
-# Disable HDMI for now
+# HDMI
 BOARD_HDMI_INCAPABLE := true
+BOARD_USES_GSC_VIDEO := true
 
 #HeartRate
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
@@ -143,9 +152,6 @@ BOARD_BATTERY_DEVICE_NAME := battery
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
-
-# frameworks/native/libs/binder/Parcel.cpp
-COMMON_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
 ### FONTS
 EXTENDED_FONT_FOOTPRINT := true
