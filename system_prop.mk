@@ -67,6 +67,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_large_cache_height=2048 \
     ro.hwui.fbo_cache_size=16
 
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=1 \
+    media.stagefright.less-secure=1
+
 # Network
 # Define default initial receive window size in segments.
 PRODUCT_PROPERTY_OVERRIDES += \
