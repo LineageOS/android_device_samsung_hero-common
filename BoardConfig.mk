@@ -9,7 +9,7 @@ TARGET_BOARD_PLATFORM := exynos5
 TARGET_SLSI_VARIANT := cm
 TARGET_SOC := exynos8890
 
-TARGET_BUILD_VARIANT := eng
+TARGET_BUILD_VARIANT := userdebug
 
 # Architecture
 TARGET_ARCH := arm64
@@ -89,16 +89,19 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
 ifeq ($(RECOVERY_VARIANT),twrp)
-TARGET_RECOVERY_FSTAB := device/samsung/hero2ltexx/rootdir/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/samsung/hero2ltexx/rootdir/recovery.fstab
 else
-TARGET_RECOVERY_FSTAB := device/samsung/hero2ltexx/rootdir/etc/fstab.samsungexynos8890
+TARGET_RECOVERY_FSTAB := device/samsung/hero2ltexx/rootdir/fstab.samsungexynos8890
 endif
 
 # SELinux
 #BOARD_SEPOLICY_DIRS += \
 #    device/samsung/hero2ltexx/sepolicy
 
-# Radio
+# RIL
+BOARD_VENDOR := samsung
+BOARD_PROVIDES_LIBRIL := true
+BOARD_MODEM_TYPE := ss333
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 
 # NFC
@@ -117,9 +120,12 @@ BOARD_USE_ANB_OUTBUF_SHARE := true
 BOARD_USE_IMPROVED_BUFFER := true
 BOARD_USE_NON_CACHED_GRAPHICBUFFER := true
 BOARD_USE_GSC_RGB_ENCODER := true
-BOARD_USE_CSC_HW := true
+BOARD_USE_CSC_HW := false
 BOARD_USE_QOS_CTRL := false
 BOARD_USE_VP8ENC_SUPPORT := true
+
+# FIMG2D
+BOARD_USES_SKIA_FIMGAPI := true
 
 # (G)SCALER
 BOARD_USES_SCALER := true
@@ -129,16 +135,17 @@ BOARD_USES_DT := true
 #~ BOARD_USES_GSC_VIDEO := true
 
 #Fix for gralloc & pixelformat
-BOARD_USE_BGRA_8888 := true
+#BOARD_USE_BGRA_8888 := true
 BOARD_NEEDS_MEMORYHEAPION := true
 EXYNOS5_ENHANCEMENTS := true
+BOARD_USES_EXYNOS_MFC_MEDIA := true
 
 ifdef EXYNOS5_ENHANCEMENTS
-COMMON_GLOBAL_CFLAGS += -DEXYNOS5_ENHANCEMENTS
+TARGET_GLOBAL_CFLAGS += -DEXYNOS5_ENHANCEMENTS
 endif
 
-# Samsung LSI OpenMAX
-COMMON_GLOBAL_CFLAGS += -DUSE_NATIVE_SEC_NV12TILED
+#~ # Samsung LSI OpenMAX
+TARGET_GLOBAL_CFLAGS += -DUSE_NATIVE_SEC_NV12TILED
 
 # HDMI
 BOARD_HDMI_INCAPABLE := true
@@ -146,6 +153,9 @@ BOARD_USES_GSC_VIDEO := true
 
 #HeartRate
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
+
+# PowerHAL
+TARGET_POWERHAL_VARIANT := samsung
 
 # Charger
 BOARD_BATTERY_DEVICE_NAME := battery
@@ -156,6 +166,13 @@ CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
 ### FONTS
 EXTENDED_FONT_FOOTPRINT := true
 
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_SAMSUNG_BLUETOOTH := true
+BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI          := true
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -164,9 +181,11 @@ BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+WIFI_DRIVER_NVRAM_PATH           := "/etc/wifi/nvram_net.txt"
+WIFI_DRIVER_NVRAM_PATH_PARAM	 := "/sys/module/dhd/parameters/nvram_path"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin_c0"
-WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin_c0"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_BAND                        := 802_11_ABG
 
 # CMHW
