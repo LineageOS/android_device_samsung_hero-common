@@ -15,14 +15,16 @@ LOCAL_PATH := device/samsung/hero2ltexx
 PRODUCT_PACKAGES += \
 	fstab.samsungexynos8890 \
 	init.baseband.rc \
+	init.carrier.rc \
 	init.gps.rc \
 	init.rilchip.rc \
 	init.rilcommon.rc \
-	init.wifi.rc \
-	init.samsungexynos8890.usb.rc \
+	init.samsung.rc \
 	init.samsungexynos8890.rc \
+	init.samsungexynos8890.usb.rc \
+	init.sec.boot.sh \
+	init.wifi.rc \
 	ueventd.samsungexynos8890.rc \
-	init.sec.boot.sh
 
 ###########################################################
 ### PERMISSONS
@@ -34,7 +36,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
@@ -74,8 +75,10 @@ PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196608 \
-    ro.bq.gpu_to_cpu_unsupported=1
+    ro.bq.gpu_to_cpu_unsupported=1 \
+    ro.opengles.version=196609 \
+    ro.sf.lcd_density=560 \
+    debug.hwc.force_gpu=1
 
 PRODUCT_PACKAGES += \
 	libion \
@@ -88,38 +91,41 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 # cpboot-daemon for modem
-#PRODUCT_COPY_FILES += \
-#   $(LOCAL_PATH)/ril/sbin/cbd:root/sbin/cbd
-#~ PRODUCT_PACKAGES += \
-#~ 	modemloader \
-#~     cbd \
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ril/sbin/cbd:system/bin/cbd
+   
+PRODUCT_PACKAGES += \
+    libxml2 \
+    libprotobuf-cpp-full
+
+PRODUCT_PACKAGES += \
+    libsecril-client \
+    libsecril-client-sap \
+    modemloader
     
 ###########################################################
 ### WIFI
 ###########################################################
 
-#~ PRODUCT_COPY_FILES += \
-#~ 	$(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-#~ 	$(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
-#~ PRODUCT_PROPERTY_OVERRIDES += \
-#~ 	wifi.interface=wlan0
+PRODUCT_PACKAGES += \
+    macloader \
+    wifiloader \
+    hostapd \
+    libwpa_client \
+    wpa_supplicant
 
-#~ PRODUCT_PACKAGES += \
-#~ 	libnetcmdiface \
-#~ 	macloader \
-#~ 	wifiloader \
-#~ 	hostapd \
-#~ 	libwpa_client \
-#~ 	wpa_supplicant
+# hardware/broadcom/wlan/bcmdhd/config/Android.mk
+PRODUCT_PACKAGES += \
+    dhcpcd.conf
 
-#~ # hardware/broadcom/wlan/bcmdhd/config/Android.mk
-#~ PRODUCT_PACKAGES += \
-#~ 	dhcpcd.conf
+# external/wpa_supplicant_8/wpa_supplicant/wpa_supplicant_conf.mk
+PRODUCT_PACKAGES += \
+    wpa_supplicant.conf
 
-#~ # external/wpa_supplicant_8/wpa_supplicant/wpa_supplicant_conf.mk
-#~ PRODUCT_PACKAGES += \
-#~ 	wpa_supplicant.conf
 
 ###########################################################
 ### BLUETOOTH
@@ -152,9 +158,9 @@ PRODUCT_PACKAGES += \
 ### AUDIO
 ###########################################################
 
-#~ PRODUCT_COPY_FILES += \
-#~ 	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-#~ 	$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+	$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
@@ -212,17 +218,8 @@ PRODUCT_PACKAGES += \
 ### CAMERA
 ###########################################################
 
-#~ PRODUCT_PACKAGES += \
-#~ 	Snap
-
-#~ PRODUCT_PACKAGES += \
-#~ 	libhwjpeg \
-#~ 	libsamsung_symbols \
-#~ 	libdmitry
-
-#~ # This fixes switching between front/back camera sensors
-#~ PRODUCT_PROPERTY_OVERRIDES += \
-#~     camera2.portability.force_api=1
+PRODUCT_PACKAGES += \
+	Snap
 
 ###########################################################
 ### TOUCHSCREEN
@@ -237,9 +234,11 @@ PRODUCT_COPY_FILES += \
 ### CHARGER
 ###########################################################
 
+# Offmode charger
+# Use cm images if available, aosp ones otherwise
 PRODUCT_PACKAGES += \
-	charger_res_images \
-	charger
+    charger_res_images \
+    cm_charger_res_images
 
 ###########################################################
 ### MTP
@@ -275,6 +274,9 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	persist.sys.usb.config=mtp,adb \
 	ro.securestorage.support=false \
 
+
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
 
 $(call inherit-product-if-exists, build/target/product/full.mk)
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
