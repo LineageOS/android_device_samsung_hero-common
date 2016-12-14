@@ -18,10 +18,10 @@ on fs
     chmod 0660 /sys/devices/virtual/misc/umts_dm0/dm_state
     chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state
 
-    #For cpefs partition
+#For cpefs partition
     mkdir /cpefs 0771 radio system
     wait /dev/block/platform/155a0000.ufs/by-name/CPEFS
-    check_fs /dev/block/platform/155a0000.ufs/by-name/CPEFS ext4
+#~ check_fs /dev/block/platform/155a0000.ufs/by-name/CPEFS ext4
     mount ext4 /dev/block/platform/155a0000.ufs/by-name/CPEFS /cpefs noatime nosuid nodev barrier=1
     chown radio system /cpefs
     chmod 0771 /cpefs
@@ -57,8 +57,13 @@ on property:ril.clatd.v4-rmnet6=up
 on property:ril.clatd.v4-rmnet7=up
     write /sys/class/net/rmnet7/queues/rx-0/rps_cpus 4
     write /sys/class/net/v4-rmnet7/queues/rx-0/rps_cpus 2
+    
+# Parse hardware revision (needs to happen before cbd starts)
+service modemloader /system/bin/modemloader
+    class core
+    oneshot
 
-service cpboot-daemon /sbin/cbd -d -tss310 -bm -mm -P platform/155a0000.ufs/by-name/RADIO -c platform/155a0000.ufs/by-name/CP_DEBUG
+service cpboot-daemon /system/bin/cbd -d -tss310 -bm -mm -P platform/155a0000.ufs/by-name/RADIO -c platform/155a0000.ufs/by-name/CP_DEBUG
     class main
     user root
     group radio cache inet misc audio sdcard_rw log sdcard_r shell
