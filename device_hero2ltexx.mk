@@ -74,6 +74,10 @@ PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2560
+TARGET_SCREEN_WIDTH := 1440
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bq.gpu_to_cpu_unsupported=1 \
     ro.opengles.version=196609 \
@@ -91,17 +95,12 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 # cpboot-daemon for modem
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ril/sbin/cbd:system/bin/cbd
+#~ PRODUCT_COPY_FILES += \
+#~     $(LOCAL_PATH)/ril/sbin/cbd:sbin/cbd
    
-PRODUCT_PACKAGES += \
-    libxml2 \
-    libprotobuf-cpp-full
-
-PRODUCT_PACKAGES += \
-    libsecril-client \
-    libsecril-client-sap \
-    modemloader
+#~ PRODUCT_PACKAGES += \
+#~     libprotobuf-cpp-full \
+#~     modemloader
     
 ###########################################################
 ### WIFI
@@ -197,10 +196,9 @@ PRODUCT_PACKAGES += \
 ### GPS
 ###########################################################
 
-#PRODUCT_COPY_FILES += \
-#	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-#	$(LOCAL_PATH)/configs/gps/SuplRootCert:system/etc/SuplRootCert \
-#	$(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
 
 #PRODUCT_PACKAGES += \
 #    libdmitry
@@ -226,9 +224,12 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/idc/ft5x06_ts.idc:/system/usr/idc/ft5x06_ts.idc \
-	$(LOCAL_PATH)/idc/Synaptics_HID_TouchPad.idc:/system/usr/idc/Synaptics_HID_TouchPad.idc \
-	$(LOCAL_PATH)/idc/Synaptics_RMI4_TouchPad_Sensor.idc:/system/usr/idc/Synaptics_RMI4_TouchPad_Sensor.idc
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    $(LOCAL_PATH)/idc/ft5x06_ts.idc:system/usr/idc/ft5x06_ts.idc \
+    $(LOCAL_PATH)/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
+    $(LOCAL_PATH)/idc/Synaptics_RMI4_TouchPad_Sensor.idc:system/usr/idc/Synaptics_RMI4_TouchPad_Sensor.idc \
+    $(LOCAL_PATH)/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
 
 ###########################################################
 ### CHARGER
