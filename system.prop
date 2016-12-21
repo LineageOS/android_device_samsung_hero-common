@@ -17,24 +17,16 @@ ro.sf.lcd_density=640
 ro.kernel.qemu.gles=1
 persist.demo.hdmirotationlock=false
 
-# read DS/SS property
-import /efs/factory.prop
-ro.multisim.simslotcount=2
-
-# SAMP_SPCM
-sys.config.samp_spcm_enable=true
-sys.config.spcm_db_enable=true
-sys.config.spcm_db_launcher=true
-sys.config.spcm_preload_enable=true
-
 # Radio
-rild.libargs=-d /dev/ttyS0
 rild.libpath=/system/lib64/libsec-ril.so
-ro.telephony.ril_class=hero2ltexxRIL
-
+rild.libargs=-d /dev/ttyS0
+ro.telephony.ril_class=heroRIL
+telephony.lteOnGsmDevice=1
+ro.telephony.default_network=9
+ro.use_data_netmgrd=false
+persist.data.netmgrd.qos.enable=false
 ro.ril.hsxpa=1
 ro.ril.gprsclass=10
-ro.ril.telephony.mqanelements=5
 
 #
 # HWC

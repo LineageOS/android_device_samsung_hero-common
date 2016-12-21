@@ -1,3 +1,7 @@
+# System
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.name=hero2ltexx
+
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
@@ -63,3 +67,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib64/libsec-ril.so
+    rild.libargs=-d /dev/ttyS0
+    ro.telephony.ril_class=heroRIL
+    telephony.lteOnGsmDevice=1
+    ro.telephony.default_network=9
+    ro.use_data_netmgrd=false
+    persist.data.netmgrd.qos.enable=false
+    ro.ril.hsxpa=1
+    ro.ril.gprsclass=10
