@@ -13,5 +13,5 @@
 
 # VOLD
 /dev/block/platform/155a0000.ufs/by-name/HIDDEN          /preload    ext4    defaults    voldmanaged=preload:auto
-/devices/15740000.dwmmc2/mmc_host/mmc*                       auto    vfat    defaults    voldmanaged=sdcard:auto
+/devices/15740000.dwmmc2/mmc_host/mmc*                       auto    auto    defaults    voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/15400000.usb/15400000.dwc3/xhci-hcd.2.auto/usb*     auto    auto    defaults    voldmanaged=usb:auto
