@@ -32,6 +32,7 @@ import java.util.Collections;
 
 import com.android.internal.telephony.uicc.IccCardApplicationStatus;
 import com.android.internal.telephony.uicc.IccCardStatus;
+import com.android.internal.telephony.uicc.IccUtils;
 
 /**
  * RIL customization for Galaxy S7.
@@ -40,6 +41,7 @@ import com.android.internal.telephony.uicc.IccCardStatus;
 public class heroRIL extends RIL implements CommandsInterface {
 
     private boolean DBG = false;
+    private boolean isGsm = false;
 
     public heroRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
@@ -176,7 +178,6 @@ public class heroRIL extends RIL implements CommandsInterface {
         return response;
     }
 
-    @Override
     protected void
     processUnsolicited (Parcel p) {
         Object ret;
@@ -201,9 +202,6 @@ public class heroRIL extends RIL implements CommandsInterface {
                 // Rewind the Parcel
                 p.setDataPosition(dataPosition);
                 if(DBG) Rlog.d("SHRILGET", "UNKNOWN UNSL: " + response);
-
-                // Forward responses that we are not overriding to the super class
-                super.processUnsolicited(p);
                 return;
         }
     }
