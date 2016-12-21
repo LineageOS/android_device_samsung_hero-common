@@ -1,2 +1,0 @@
-add_lunch_combo cm_hero2ltexx-eng
-add_lunch_combo cm_hero2ltexx-userdebug

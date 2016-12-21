@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-export DEVICE=hero2ltexx
+export DEVICE=universal8890
 export VENDOR=samsung
 
 if [ $# -eq 0 ]; then

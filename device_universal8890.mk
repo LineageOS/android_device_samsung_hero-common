@@ -1,12 +1,7 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/samsung/hero2ltexx/hero2ltexx-vendor.mk)
-
 # Common Overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/hero2ltexx/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/universal8890/overlay
 
-LOCAL_PATH := device/samsung/hero2ltexx
+LOCAL_PATH := device/samsung/universal8890
 
 ###########################################################
 ### RAMDISK
@@ -14,7 +9,6 @@ LOCAL_PATH := device/samsung/hero2ltexx
 
 PRODUCT_PACKAGES += \
 	fstab.samsungexynos8890 \
-	init.baseband.rc \
 	init.carrier.rc \
 	init.gps.rc \
 	init.rilchip.rc \
@@ -69,7 +63,7 @@ PRODUCT_COPY_FILES += \
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
 # if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_CONFIG := xlarge
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
@@ -94,10 +88,6 @@ PRODUCT_PACKAGES += \
 ### RADIO
 ###########################################################
 
-# cpboot-daemon for modem
-#~ PRODUCT_COPY_FILES += \
-#~     $(LOCAL_PATH)/ril/sbin/cbd:sbin/cbd
-   
 #~ PRODUCT_PACKAGES += \
 #~     libprotobuf-cpp-full \
 #~     modemloader
@@ -107,8 +97,8 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+    $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
     macloader \
@@ -117,49 +107,31 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant
 
-# hardware/broadcom/wlan/bcmdhd/config/Android.mk
-PRODUCT_PACKAGES += \
-    dhcpcd.conf
-
 # external/wpa_supplicant_8/wpa_supplicant/wpa_supplicant_conf.mk
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf
-
-
-###########################################################
-### BLUETOOTH
-###########################################################
-
-#~ PRODUCT_COPY_FILES += \
-#~ 	$(LOCAL_PATH)/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
-#~ 	$(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 ###########################################################
 ### NFC
 ###########################################################
 
-#PRODUCT_COPY_FILES += \
-#	$(LOCAL_PATH)/configs/nfc/libnfc-sec-hal.conf:system/etc/libnfc-sec-hal.conf \
-#	$(LOCAL_PATH)/configs/nfc/libnfc-sec.conf:system/etc/libnfc-brcm.conf \
-#	$(LOCAL_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nfc/libnfc-sec-hal.conf:system/etc/libnfc-sec-hal.conf \
+    $(LOCAL_PATH)/configs/nfc/libnfc-sec.conf:system/etc/libnfc-brcm.conf \
+    $(LOCAL_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml
 
-#PRODUCT_PACKAGES += \
-#	com.android.nfc_extras \
-#	libnfc_nci_jni \
-#	libnfc-nci \
-#	NfcNci \
-#	Tag
-
-#PRODUCT_PROPERTY_OVERRIDES += \
-#	ro.nfc.sec_hal=true
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    NfcNci \
+    Tag
 
 ###########################################################
 ### AUDIO
 ###########################################################
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
+	$(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
+	$(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
@@ -175,8 +147,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
 
 ###########################################################
 ### POWER
@@ -197,11 +169,8 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
-
-#PRODUCT_PACKAGES += \
-#    libdmitry
+    $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
 
 ###########################################################
 ### FINGERPRINT
@@ -224,12 +193,12 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-    $(LOCAL_PATH)/idc/ft5x06_ts.idc:system/usr/idc/ft5x06_ts.idc \
-    $(LOCAL_PATH)/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
-    $(LOCAL_PATH)/idc/Synaptics_RMI4_TouchPad_Sensor.idc:system/usr/idc/Synaptics_RMI4_TouchPad_Sensor.idc \
-    $(LOCAL_PATH)/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
+    $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    $(LOCAL_PATH)/configs/idc/ft5x06_ts.idc:system/usr/idc/ft5x06_ts.idc \
+    $(LOCAL_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
+    $(LOCAL_PATH)/configs/idc/Synaptics_RMI4_TouchPad_Sensor.idc:system/usr/idc/Synaptics_RMI4_TouchPad_Sensor.idc \
+    $(LOCAL_PATH)/configs/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
 
 ###########################################################
 ### CHARGER
@@ -279,12 +248,9 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
-$(call inherit-product-if-exists, build/target/product/full.mk)
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
 # call Samsung LSI board support package
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos8890/exynos8890.mk)
 
-PRODUCT_NAME := full_hero2ltexx
-PRODUCT_DEVICE := hero2ltexx
+# call the proprietary setup
+$(call inherit-product, vendor/samsung/universal8890/universal8890-vendor.mk)

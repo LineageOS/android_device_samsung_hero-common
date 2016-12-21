@@ -16,7 +16,7 @@
 
 package org.cyanogenmod.hardware;
 
-import org.cyanogenmod.hardware.util.FileUtils;
+import org.cyanogenmod.internal.util.FileUtils;
 
 import java.io.File;
 
@@ -25,8 +25,7 @@ public class VibratorHW {
     private static String LEVEL_PATH = "/sys/class/timed_output/vibrator/intensity";
 
     public static boolean isSupported() {
-        File f = new File(LEVEL_PATH);
-        return f.exists();
+        return FileUtils.isFileWritable(CONTROL_PATH);
     }
 
     public static int getMaxIntensity()  {
@@ -38,23 +37,34 @@ public class VibratorHW {
     }
 
     public static int getWarningThreshold()  {
-        return 9000;
+        /* 10000 is the default value on stock */
+        return 10000;
     }
 
     public static int getCurIntensity()  {
         File f = new File(LEVEL_PATH);
-        String actualIntensity = FileUtils.readOneLine(LEVEL_PATH).replace("intensity: ", "");
+        String intensity = FileUtils.readOneLine(LEVEL_PATH);
 
-        return f.exists() ? Integer.parseInt(actualIntensity) : 0;
+        intensity = intensity.replace("intensity: ", "");
+
+        if(f.exists()) {
+            return Integer.parseInt(intensity);
+        } else {
+            return 0;
+        }
     }
 
     public static int getDefaultIntensity()  {
-        return 7500;
+        return 9000;
     }
 
     public static boolean setIntensity(int intensity)  {
         File f = new File(LEVEL_PATH);
 
-        return f.exists() && FileUtils.writeLine(LEVEL_PATH, String.valueOf(intensity));
+        if(f.exists()) {
+            return FileUtils.writeLine(LEVEL_PATH, String.valueOf(intensity));
+        } else {
+            return false;
+        }
     }
 }

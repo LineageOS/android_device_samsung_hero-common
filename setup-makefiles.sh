@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export VENDOR=samsung
-export DEVICE=hero2ltexx
+export DEVICE=universal8890
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
@@ -30,7 +30,7 @@ LINEEND=" \\"
 COUNT=`wc -l proprietary-files.txt | awk {'print $1'}`
 DISM=`egrep -c '(^#|^$)' proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
-for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' common-proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""

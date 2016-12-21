@@ -2,9 +2,7 @@
 # system.prop for hero2ltexx
 #
 
-ro.product.model=SM-G935F
 ro.product.brand=samsung
-ro.product.name=hero2ltexx
 ro.product.device=hero2lte
 ro.product.board=universal8890
 ro.hardware=universal8890

@@ -1,7 +1,3 @@
-# System
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.name=hero2ltexx
-
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
@@ -10,6 +6,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path="/efs/bluetooth/bt_addr"
+
+# Bluetooth workaround:
+# The new CAF code defaults to MCT HAL, but we
+# need the old H4 HAL for our Broadcom WiFi.
+PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.bluetooth.soc=rome
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -70,12 +72,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib64/libsec-ril.so
-    rild.libargs=-d /dev/ttyS0
-    ro.telephony.ril_class=heroRIL
-    telephony.lteOnGsmDevice=1
-    ro.telephony.default_network=9
-    ro.use_data_netmgrd=false
-    persist.data.netmgrd.qos.enable=false
-    ro.ril.hsxpa=1
-    ro.ril.gprsclass=10
+    rild.libpath=/system/lib64/libsec-ril.so \
+    rild.libargs=-d /dev/ttyS0 \
+    ro.telephony.ril_class=heroRIL \
+    telephony.lteOnGsmDevice=1 \
+    ro.telephony.default_network=9 \
+    ro.use_data_netmgrd=false \
+    persist.data.netmgrd.qos.enable=false \
+    ro.ril.hsxpa=1 \
+    ro.ril.gprsclass=10 \
