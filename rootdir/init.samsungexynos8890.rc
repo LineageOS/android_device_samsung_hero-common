@@ -4,7 +4,7 @@ import init.carrier.rc
 import init.wifi.rc
 import init.gps.rc
 import init.samsung.rc
-import init.power.rc
+# import init.power.rc
 
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -20,9 +20,11 @@ on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
-    symlink /storage/usbdisk /mnt/usbdisk
     symlink /sdcard1 /storage/sdcard1
+    symlink /sdcard1 /mnt/extSdCard
+    symlink /sdcard1 /mnt/sdcard1
     symlink /sdcard1 /external_sd
+    symlink /storage/usbdisk /mnt/usbdisk
 
     export EXTERNAL_STORAGE /sdcard
 
@@ -126,7 +128,6 @@ on post-fs-data
     chmod 0600 /efs/factory.prop
 
 on boot
-
     # override init.rc to keep plenty of large order chunks around
     # to improve allocation times
     # write /proc/sys/vm/min_free_kbytes 32768
@@ -333,7 +334,7 @@ on fs
     mkdir /persdata/absolute 0750 system system
 
     wait /dev/block/platform/155a0000.ufs/by-name/PERSDATA
-#~ check_fs /dev/block/platform/155a0000.ufs/by-name/PERSDATA ext4
+    check_fs /dev/block/platform/155a0000.ufs/by-name/PERSDATA ext4
     mount ext4 /dev/block/platform/155a0000.ufs/by-name/PERSDATA /persdata/absolute nosuid nodev barrier=1
 
     chown system system /persdata
@@ -365,10 +366,6 @@ on fs
     chmod 0664 /sys/class/input_booster/level
     chmod 0664 /sys/class/input_booster/head
     chmod 0664 /sys/class/input_booster/tail
-
-# Permissions for EFS
-    chown radio system /efs
-    chmod 0771 /efs
 
 # Permissions for ION
     chmod 0660 /sys/class/ion_cma/ion_video_ext/isolated
@@ -587,6 +584,7 @@ on fs
     chown system radio /sys/class/sensors/ssp_sensor/uncal_gyro_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/interrupt_gyro_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/ssp_flush
+    chown system radio /sys/class/sensors/ssp_sensor/sensor_state
 
  # MOBEAM
     chown system radio /sys/class/sec/sec_barcode_emul/vendor
@@ -612,16 +610,6 @@ on fs
 
 #ARGOSD network_throughput
     chown system system /dev/network_throughput
-    
-# sem_daemon permission
-    chown system system /efs/sec_efs/ssp_data
-    chmod 0644 /efs/sec_efs/ssp_data
-    
-# Copy DRM Key
-	copy /system/app/wv.keys /factory/wv.keys
-
-# Permission for DRM Key
-	chmod 0644 /factory/wv.keys
 
 # ARGOSD
 service argos-daemon /system/bin/argosd
@@ -633,6 +621,7 @@ service prepare_param /system/bin/prepare_param.sh /dev/block/platform/155a0000.
     class core
     user root
     group root
+    seclabel u:r:prepare_param:s0
     oneshot
 
 # SENSOR FRAMEWORK : starts fingerprintService
@@ -646,6 +635,12 @@ service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group system
+
+# Copy DRM Key
+    copy /system/app/wv.keys /factory/wv.keys
+
+# Permission for DRM Key
+    chmod 0644 /factory/wv.keys
 
 # MobiCore startup
 # service mobicore /system/bin/mcDriverDaemon -r /system/app/020a0000000000000000000000000000.drbin -r /system/app/mcRegistry/FFFFFFFFD00000000000000000000016.tlbin
@@ -675,6 +670,7 @@ on property:persist.sys.storage_preload=0
 # Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
 service watchdogd /sbin/watchdogd 10 20
     class core
+    seclabel u:r:watchdogd:s0
 
 # on userdebug and eng builds, enable kgdb on the serial console
 on property:ro.debuggable=1
@@ -687,7 +683,7 @@ on property:ro.bootmode=charger
 
 on property:ro.bootmode=charger
     wait /dev/block/platform/155a0000.ufs/by-name/EFS
-#~ check_fs /dev/block/platform/155a0000.ufs/by-name/EFS ext4
+    check_fs /dev/block/platform/155a0000.ufs/by-name/EFS ext4
     mount ext4 /dev/block/platform/155a0000.ufs/by-name/EFS /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit
 
 on property:ro.bootmode=charger
@@ -696,6 +692,10 @@ on property:ro.bootmode=charger
 service lpm /system/bin/lpm
     class sec-charger
     critical
+
+# sem_daemon permission
+    chown system system /efs/sec_efs/ssp_data
+    chmod 0644 /efs/sec_efs/ssp_data
 
 # sem_daemon
 service sem_daemon /system/bin/sem_daemon
@@ -731,6 +731,27 @@ on property:ro.multisim.simslotcount=1
 on property:ro.multisim.simslotcount=2
     setprop persist.radio.multisim.config dsds
 
+#SLocation
+	service cellgeofenced /system/bin/cellgeofenced
+	class main
+	socket cellgeofence seqpacket 0660 gps system
+	user gps
+	group system inet
+
+# emergency firmware update
+on firmware
+    mount_all /fstab.samsungexynos8890.fwup
+    class_start firmware_update
+
+# Emergency Firmware Update
+service fwup /sbin/ffu -a
+    class firmware_update
+    user root
+    group root
+    seclabel u:r:ffu:s0
+    critical
+    oneshot
+
 # Secure Storage startup
 service secure_storage /system/bin/secure_storage_daemon
     class core
@@ -765,4 +786,5 @@ service swapon /sbin/sswap -s -f 2048
     class core
     user root
     group root
+    seclabel u:r:sswap:s0
     oneshot
