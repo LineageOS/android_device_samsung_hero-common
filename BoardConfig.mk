@@ -48,10 +48,6 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-#BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hero2ltexx/mkdtbhbootimg.mk
-#BOARD_CUSTOM_MKBOOTIMG := mkdtbhbootimg
-#BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x11000000 --tags_offset 0x10000100
-#BOARD_MKBOOTIMG_ARGS += --dt_dir $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts/
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x10008000 --ramdisk_offset 0x11000000 --tags_offset 0x10000100 --dt device/samsung/$(TARGET_DEVICE)/dt.img
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos8890
 TARGET_KERNEL_CONFIG := exynos8890-hero2lte_defconfig
@@ -95,14 +91,18 @@ TARGET_RECOVERY_FSTAB := device/samsung/hero2ltexx/rootdir/fstab.samsungexynos88
 endif
 
 # SELinux
-#BOARD_SEPOLICY_DIRS += \
-#    device/samsung/hero2ltexx/sepolicy
+BOARD_SEPOLICY_DIRS := \
+	device/samsung/hero2ltexx/sepolicy
 
 # RIL
-BOARD_VENDOR := samsung
-BOARD_PROVIDES_LIBRIL := true
-BOARD_MODEM_TYPE := ss333
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_SAMSUNG_BLUETOOTH := true
+BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := universal8890
@@ -131,9 +131,6 @@ BOARD_USES_SKIA_FIMGAPI := true
 BOARD_USES_SCALER := true
 BOARD_USES_DT := true
 
-#~ BOARD_USES_HWC_SERVICES := true
-#~ BOARD_USES_GSC_VIDEO := true
-
 #Fix for gralloc & pixelformat
 #BOARD_USE_BGRA_8888 := true
 BOARD_NEEDS_MEMORYHEAPION := true
@@ -157,21 +154,18 @@ TARGET_NO_SENSOR_PERMISSION_CHECK := true
 # PowerHAL
 TARGET_POWERHAL_VARIANT := samsung
 
-# Charger
-BOARD_BATTERY_DEVICE_NAME := battery
-BOARD_CHARGER_ENABLE_SUSPEND := true
+# Charger/Healthd
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
-CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+RED_LED_PATH := "/sys/class/leds/led_r/brightness"
+GREEN_LED_PATH := "/sys/class/leds/led_g/brightness"
+BLUE_LED_PATH := "/sys/class/leds/led_b/brightness"
+BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
+CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/batt_lp_charging
 
 ### FONTS
 EXTENDED_FONT_FOOTPRINT := true
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_HAVE_SAMSUNG_BLUETOOTH := true
-BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI          := true
