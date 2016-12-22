@@ -16,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter hero2ltebmc, hero2lteskt, hero2ltektt, hero2ltelgt, hero2ltexx, heroltebmc, herolteskt, heroltektt, heroltelgt, heroltexx, $(TARGET_DEVICE)),)
+ifneq ($(filter exynos8890, $(TARGET_SOC)),)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
