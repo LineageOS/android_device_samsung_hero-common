@@ -1,5 +1,5 @@
 #
-# system.prop for hero2ltexx
+# system.prop for Universal8890
 #
 
 ro.product.brand=samsung
@@ -8,6 +8,7 @@ ro.product.board=universal8890
 ro.hardware=universal8890
 ro.arch=exynos8890
 ro.chipname=universal8890
+ro.boot.bootdevice=155a0000.ufs
 
 # Media
 ro.sf.lcd_density=640
@@ -38,3 +39,12 @@ persist.sys.isUsbOtgEnabled=true
 persist.service.adb.enable=1                                                    
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
+
+# Encryption
+ro.sec.fle.encryption=true
+security.mdpp=None
+security.mdpp.mass=skmm
+security.mdpp.result=None
+ro.security.mdpp.ver=2.0
+ro.security.mdpp.release=8
+ro.hardware.keystore=mdfpp
