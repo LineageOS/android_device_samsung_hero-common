@@ -27,8 +27,8 @@ PRODUCT_COPY_FILES += \\
 EOF
 
 LINEEND=" \\"
-COUNT=`wc -l proprietary-files.txt | awk {'print $1'}`
-DISM=`egrep -c '(^#|^$)' proprietary-files.txt`
+COUNT=`wc -l common-proprietary-files.txt | awk {'print $1'}`
+DISM=`egrep -c '(^#|^$)' common-proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
 for FILE in `egrep -v '(^#|^$)' common-proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
