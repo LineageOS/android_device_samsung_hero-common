@@ -13,8 +13,6 @@ TARGET_BOARD_PLATFORM := exynos5
 TARGET_SLSI_VARIANT := cm
 TARGET_SOC := exynos8890
 
-TARGET_BUILD_VARIANT := userdebug
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
