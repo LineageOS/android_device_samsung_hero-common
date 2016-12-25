@@ -68,6 +68,11 @@ TARGET_RECOVERY_PIXEL_FORMAT := "ARGB_8888"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
+# Kernel Toolchain
+# - Default toolchain has some compatibility problems with Exynos Kernel.
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-7.0/bin
+
 # SELinux
 BOARD_SEPOLICY_DIRS := \
 	device/samsung/universal8890/sepolicy
