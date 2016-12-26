@@ -73,6 +73,10 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-7.0/bin
 
+# Boot/Recovery Image
+BOARD_KERNEL_SEPARATED_DT := true
+TARGET_CUSTOM_DTBTOOL := dtbToolExynos
+
 # SELinux
 BOARD_SEPOLICY_DIRS := \
 	device/samsung/universal8890/sepolicy

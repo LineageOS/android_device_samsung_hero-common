@@ -234,6 +234,13 @@ PRODUCT_PACKAGES += \
 	SamsungServiceMode \
 	Torch
 
+###########################################################
+### DTB TOOL
+###########################################################
+
+PRODUCT_PACKAGES += \
+	dtbToolExynos
+
 # Default.prop overrides to get adb working at boot   
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
