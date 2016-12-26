@@ -263,7 +263,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.hardware=universal8890 \
     persist.service.adb.enable=1 \
 	persist.service.debuggable=1 \
-	persist.sys.usb.config=mtp,adb \
+	persist.sys.usb.config=adb \
 	ro.securestorage.support=false \
 
 
