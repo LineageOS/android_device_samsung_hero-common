@@ -38,7 +38,7 @@ persist.sys.isUsbOtgEnabled=true
 # Default USB mode
 persist.service.adb.enable=1                                                    
 persist.service.debuggable=1
-persist.sys.usb.config=mtp,adb
+persist.sys.usb.config=adb
 
 # Encryption
 ro.sec.fle.encryption=true
