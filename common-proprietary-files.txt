@@ -16,8 +16,8 @@
 #
 
 # Bluetooth
-vendor/firmware/bcm4359C0_V0044.0061_murata.hcd
-vendor/firmware/bcm4359C0_V0044.0062_semco.hcd
+vendor/firmware/bcm4359C0_V0076.0127_murata.hcd
+vendor/firmware/bcm4359C0_V0076.0124_semco.hcd
 
 # Mobicore
 app/FFFFFFFF000000000000000000000001.drbin
@@ -32,7 +32,6 @@ app/mcRegistry/ffffffff00000000000000000000000d.tlbin
 app/mcRegistry/ffffffff00000000000000000000000e.tlbin
 app/mcRegistry/ffffffff00000000000000000000000f.tlbin
 app/mcRegistry/ffffffff00000000000000000000001f.tlbin
-app/mcRegistry/ffffffff00000000000000000000002e.tlbin
 app/mcRegistry/ffffffff00000000000000000000003e.tlbin
 app/mcRegistry/ffffffff000000000000000000000004.tlbin
 app/mcRegistry/ffffffff000000000000000000000005.tlbin
@@ -44,7 +43,6 @@ app/mcRegistry/ffffffff000000000000000000000017.tlbin
 app/mcRegistry/ffffffff000000000000000000000019.tlbin
 app/mcRegistry/ffffffff000000000000000000000038.tlbin
 app/mcRegistry/ffffffff000000000000000000000041.tlbin
-app/mcRegistry/ffffffff000000000000000000000042.tlbin
 app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
 app/mcRegistry/ffffffffd0000000000000000000000e.tlbin
 app/mcRegistry/ffffffffd00000000000000000000004.tlbin
@@ -55,11 +53,10 @@ app/mcRegistry/fffffffff0000000000000000000001b.tlbin
 app/mcRegistry/fffffffff0000000000000000000001e.tlbin
 bin/cs
 bin/mcDriverDaemon
-lib/libMcClient.so
-lib64/libMcClient.so
+vendor/lib/libMcClient.so
+vendor/lib64/libMcClient.so
 
 # Radio
-bin/cbd
 bin/rild
 lib/libreference-ril.so
 lib/libril.so
@@ -133,8 +130,6 @@ vendor/firmware/setfile_imx260.bin
 # Camera
 lib/hw/camera.exynos5.so
 lib64/hw/camera.exynos5.so
-lib/hw/camera.universal8890.so
-lib64/hw/camera.universal8890.so
 lib/libexynoscamera3.so
 lib64/libexynoscamera3.so
 lib/libexynoscamera.so
@@ -180,15 +175,16 @@ vendor/lib64/egl/libGLES_mali.so
 # GPS
 bin/gps.cer
 bin/gpsd
-lib64/hw/gps.universal8890.so
 lib/libwrappergps.so
 lib64/libwrappergps.so
+lib/libfloatingfeature.so
+lib64/libfloatingfeature.so
 
 # NFC
-etc/sec_s3nrn81_rfreg.bin
+etc/nfc/sec_s3nrn81_rfreg.bin
 lib/hw/nfc_nci.universal8890.so
 lib64/hw/nfc_nci.universal8890.so
-vendor/firmware/sec_s3nrn81_firmware.bin
+vendor/firmware/nfc/sec_s3nrn81_firmware.bin
 
 # Sensors
 lib64/libhr.so
