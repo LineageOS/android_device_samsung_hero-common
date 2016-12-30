@@ -1,5 +1,6 @@
 import init.samsungexynos8890.usb.rc
 import init.baseband.rc
+import init.bluetooth.rc
 import init.carrier.rc
 import init.wifi.rc
 import init.gps.rc
