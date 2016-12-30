@@ -24,6 +24,7 @@ LOCAL_PATH := device/samsung/universal8890
 
 PRODUCT_PACKAGES += \
 	fstab.samsungexynos8890 \
+	init.bluetooth.rc \
 	init.carrier.rc \
 	init.gps.rc \
 	init.rilchip.rc \
