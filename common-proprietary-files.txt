@@ -172,6 +172,12 @@ lib64/libflashedlls_interface.so
 vendor/lib/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_mali.so
 
+# Surface Composer
+lib/libion.so
+lib/hw/gralloc.exynos5.so
+lib64/libion.so
+lib64/hw/gralloc.exynos5.so
+
 # GPS
 bin/gps.cer
 bin/gpsd

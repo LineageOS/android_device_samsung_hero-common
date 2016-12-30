@@ -96,10 +96,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwc.force_gpu=1
 
 PRODUCT_PACKAGES += \
-	libion \
 	libion_exynos \
-	libfimg \
-	gralloc.exynos5
+	libfimg
+#	libion
+#	gralloc.exynos5
 
 ###########################################################
 ### RADIO
