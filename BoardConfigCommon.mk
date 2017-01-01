@@ -92,6 +92,7 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64
 
 # Boot/Recovery Image
 BOARD_KERNEL_SEPARATED_DT := true
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/universal8890/mkbootimg.mk
 TARGET_CUSTOM_DTBTOOL := dtbToolExynos
 
 # SELinux
