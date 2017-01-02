@@ -77,8 +77,8 @@
 	<ctl name="DSP5 Aux 2" value="AIF4RX1" />
 	<ctl name="DSP5 Aux 3" value="AIF4RX2" />
 
-	<ctl name="DSP5L Input 1 Volume" value="26" />
-	<ctl name="DSP5L Input 2 Volume" value="26" />
+	<ctl name="DSP5L Input 1 Volume" value="32" />
+	<ctl name="DSP5L Input 2 Volume" value="32" />
 
 	<ctl name="HPOUT1L Impedance Volume" value="0" />
 	<ctl name="HPOUT1R Impedance Volume" value="0" />
@@ -229,6 +229,11 @@
 		<ctl name="HPOUT1L Input 1" value="AIF1RX1" />
 		<ctl name="HPOUT1R Input 1" value="AIF1RX2" />
 		<ctl name="HP Switch" value="1" />
+		<ctl name="Noise Gate Switch" value="0" />
+		<ctl name="HPOUT1L Impedance Volume" value="105" />
+		<ctl name="HPOUT1R Impedance Volume" value="105" />
+		<ctl name="HPOUT1L Input 1 Volume" value="32" />
+		<ctl name="HPOUT1R Input 1 Volume" value="32" />
 	</path>
 
 	<path name="media-speaker-headset">
@@ -1325,6 +1330,27 @@
 		<path name="communication-bt-sco-headset" />
 	</path>
 
+	<!-- Spectro Scenario -->
+	<path name="call_spectro">
+		<ctl name="ASRC1 Rate 1" value="SYNCCLK rate 1" />
+		<ctl name="ASRC1IN1L Input" value="AIF1RX1" />
+		<ctl name="ASRC1IN1R Input" value="AIF1RX2" />
+		<ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+		<ctl name="AIF2TX2 Input 1" value="ASRC1IN1R" />
+		<ctl name="AIF1TX1 Input 1" value="AIF1RX1" />
+		<ctl name="AIF1TX2 Input 1" value="AIF1RX2" />
+		<ctl name="AIF1TX1 Input 2" value="None" />
+		<ctl name="AIF1TX2 Input 2" value="None" />
+	</path>
+
+	<path name="call_spectro-mic">
+		<ctl name="ASRC1IN2L Input" value="AIF2RX1" />
+		<ctl name="ASRC1IN2R Input" value="AIF2RX1" />
+		<ctl name="AIF1TX1 Input 1" value="ASRC1IN2L" />
+		<ctl name="AIF1TX2 Input 1" value="ASRC1IN2R" />
+	</path>
+	<!-- end of Spectro Scenario -->
+
 	<!-- remote mic output -->
 	<path name="remote-bt-ble-headset">
 		<ctl name="ISRC2 FSL" value="SYNCCLK rate 2" />
@@ -1509,7 +1535,7 @@
 		<ctl name="DSP Virtual Output Mux" value="DSP6" />
 		<ctl name="Main Mic Switch" value="1" />
 		<!--recording route -->
-		<ctl name="LHPF1 Input 1" value="IN1L" />
+		<ctl name="LHPF1 Input 1" value="IN1R" />
 		<ctl name="AIF1TX1 Input 1" value="LHPF1" />
 		<ctl name="AIF1TX2 Input 1" value="LHPF1" />
 	</path>
