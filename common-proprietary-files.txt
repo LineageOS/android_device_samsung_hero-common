@@ -177,6 +177,7 @@ lib64/hw/gralloc.exynos5.so
 # GPS
 bin/gps.cer
 bin/gpsd
+lib64/hw/gps.default.so
 lib/libwrappergps.so
 lib64/libwrappergps.so
 lib/libfloatingfeature.so
