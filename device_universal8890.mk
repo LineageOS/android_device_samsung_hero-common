@@ -27,6 +27,7 @@ LOCAL_PATH := device/samsung/universal8890
 PRODUCT_PACKAGES += \
 	fstab.samsungexynos8890 \
 	init.baseband.rc \
+	init.baseband.sh \
 	init.bluetooth.rc \
 	init.carrier.rc \
 	init.gps.rc \

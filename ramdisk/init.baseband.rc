@@ -71,6 +71,13 @@ on property:ro.multisim.simslotcount=1
 on property:ro.multisim.simslotcount=2
     setprop persist.radio.multisim.config dsds
 
+service init_baseband /init.baseband.sh
+    class boot
+    user root
+    group root
+    seclabel u:r:init:s0
+    oneshot
+
 service cpboot-daemon /sbin/cbd -d -tss310 -bm -mm -P platform/155a0000.ufs/by-name/RADIO
     class main
     user root
