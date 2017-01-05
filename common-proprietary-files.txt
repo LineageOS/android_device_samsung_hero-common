@@ -203,6 +203,7 @@ lib/hw/sensors.universal8890.so
 lib/libsensorservice.so
 lib64/hw/sensorhubs.universal8890.so
 lib64/hw/sensors.universal8890.so
+lib64/libagc_max.so
 lib64/libmaxflicker.so
 lib64/libsensorservice.so
 
