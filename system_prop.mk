@@ -85,3 +85,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
+# RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.multisim.simslotcount=2 \
+    rild.libpath=/system/lib64/libsec-ril.so \
+    rild.libpath2=/system/lib64/libsec-ril-dsds.so

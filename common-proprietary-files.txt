@@ -57,6 +57,7 @@ bin/rild
 lib/libreference-ril.so
 lib/libril.so
 lib/libsec-ril.so
+lib/libsec-ril-dsds.so
 lib/libsecnativefeature.so
 lib/libsecril-client.so
 lib/libxml2.so
@@ -64,6 +65,7 @@ lib/libprotobuf-cpp-full.so
 lib64/libreference-ril.so
 lib64/libril.so
 lib64/libsec-ril.so
+lib64/libsec-ril-dsds.so
 lib64/libsecnativefeature.so
 lib64/libsecril-client.so
 lib64/libxml2.so
