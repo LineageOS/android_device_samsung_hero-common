@@ -53,8 +53,7 @@ BOARD_OVERRIDE_RS_CPU_VARIANT_64 := cortex-a57
 # Binder
 TARGET_USES_64_BIT_BINDER := true
 
-# no hardware camera
-USE_CAMERA_STUB := true
+# Camera
 BOARD_USE_SAMSUNG_CAMERAFORMAT_NV21 := true
 
 # Bootloader
