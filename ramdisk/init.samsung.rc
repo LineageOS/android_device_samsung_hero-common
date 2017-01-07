@@ -755,16 +755,6 @@ service ss_kb_service /system/bin/ss_kbservice_daemon
     user system
     group system
 
-service drm /system/bin/drmserver
-    class main
-    user drm
-# [ SEC_MM_DRM
-# fix
-    group system drm inet drmrpc radio readproc dpgp
-# org
-#    group drm system inet drmrpc
-# ]
-
 service scs /system/bin/scs
     class main
     user system
