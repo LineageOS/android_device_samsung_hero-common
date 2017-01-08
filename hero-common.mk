@@ -14,9 +14,9 @@
 #
 
 # Common Overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/universal8890/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/hero-common/overlay
 
-LOCAL_PATH := device/samsung/universal8890
+LOCAL_PATH := device/samsung/hero-common
 
 ###########################################################
 ### RAMDISK
@@ -273,4 +273,4 @@ $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos8890/exynos8890.mk)
 
 # call the proprietary setup
-$(call inherit-product, vendor/samsung/universal8890/universal8890-vendor.mk)
+$(call inherit-product, vendor/samsung/hero-common/hero-common-vendor.mk)

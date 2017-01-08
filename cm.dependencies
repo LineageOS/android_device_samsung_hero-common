@@ -28,7 +28,7 @@
         "target_path": "kernel/samsung/universal8890"
     }
     {
-        "repository": "android_vendor_samsung_universal8890",
-        "target_path": "vendor/samsung/universal8890"
+        "repository": "android_vendor_samsung_hero-common",
+        "target_path": "vendor/samsung/hero-common"
     }
 ]

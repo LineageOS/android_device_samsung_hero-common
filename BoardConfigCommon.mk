@@ -13,7 +13,7 @@
 # GNU General Public License for more details.
 #
 
-LOCAL_PATH := device/samsung/universal8890
+LOCAL_PATH := device/samsung/hero-common
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
@@ -92,12 +92,12 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64
 
 # Boot/Recovery Image
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/universal8890/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hero-common/mkbootimg.mk
 TARGET_CUSTOM_DTBTOOL := dtbToolExynos
 
 # SELinux
 BOARD_SEPOLICY_DIRS := \
-	device/samsung/universal8890/sepolicy
+	device/samsung/hero-common/sepolicy
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
@@ -184,9 +184,9 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_BAND                        := 802_11_ABG
 
 # Hardware
-BOARD_HARDWARE_CLASS += device/samsung/universal8890/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/hero-common/cmhw
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
 # inherit from the proprietary version
--include vendor/samsung/universal8890/BoardConfigVendor.mk
+-include vendor/samsung/hero-common/BoardConfigVendor.mk
 
