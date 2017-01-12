@@ -19,38 +19,14 @@ vendor/firmware/bcm4359C0_V0076.0132_semco.hcd
 
 # Mobicore
 app/FFFFFFFF000000000000000000000001.drbin
-app/mcRegistry/00060308060501020000000000000000.tlbin
-app/mcRegistry/07010000000000000000000000000000.tlbin
-app/mcRegistry/07060000000000000000000000000000.tlbin
-app/mcRegistry/08130000000000000000000000000000.tlbin
-app/mcRegistry/ffffffff00000000000000000000000a.tlbin
-app/mcRegistry/ffffffff00000000000000000000000b.tlbin
-app/mcRegistry/ffffffff00000000000000000000000c.tlbin
-app/mcRegistry/ffffffff00000000000000000000000d.tlbin
 app/mcRegistry/ffffffff00000000000000000000000e.tlbin
-app/mcRegistry/ffffffff00000000000000000000000f.tlbin
-app/mcRegistry/ffffffff00000000000000000000003e.tlbin
-app/mcRegistry/ffffffff000000000000000000000004.tlbin
-app/mcRegistry/ffffffff000000000000000000000005.tlbin
-app/mcRegistry/ffffffff000000000000000000000012.tlbin
-app/mcRegistry/ffffffff000000000000000000000013.tlbin
-app/mcRegistry/ffffffff000000000000000000000014.tlbin
-app/mcRegistry/ffffffff000000000000000000000016.tlbin
-app/mcRegistry/ffffffff000000000000000000000017.tlbin
-app/mcRegistry/ffffffff000000000000000000000019.tlbin
-app/mcRegistry/ffffffff000000000000000000000038.tlbin
-app/mcRegistry/ffffffff000000000000000000000041.tlbin
 app/mcRegistry/ffffffffd0000000000000000000000e.tlbin
-app/mcRegistry/ffffffffd00000000000000000000004.tlbin
-app/mcRegistry/ffffffffd00000000000000000000014.tlbin
 app/mcRegistry/ffffffffd00000000000000000000016.tlbin
-app/mcRegistry/ffffffffd00000000000000000000017.tlbin
-app/mcRegistry/fffffffff0000000000000000000001b.tlbin
-app/mcRegistry/fffffffff0000000000000000000001e.tlbin
-bin/cs
 bin/mcDriverDaemon
-vendor/lib/libMcClient.so
-vendor/lib64/libMcClient.so
+lib/libMcRegistry.so
+lib64/libMcRegistry.so
+lib/libMcClient.so
+lib64/libMcClient.so
 
 # Radio
 bin/rild
@@ -205,6 +181,13 @@ lib64/libagc_max.so
 lib64/libmaxflicker.so
 lib64/libsensorservice.so
 
+# Fingerprint
+bin/fingerprintd
+lib64/hw/fingerprint.default.so
+lib64/libbauthserver.so
+lib64/libbauthtzcommon.so
+lib64/libegis_fp_normal_sensor_test.so
+lib64/libsynaFpSensorTestNwd.so
 
 # Widevine
 # vendor/lib/mediadrm/libwvdrmengine.so
