@@ -667,11 +667,6 @@ service sysmon /system/bin/sysmon
 	group root readproc
     oneshot
 
-service lpm /system/bin/lpm
-    class sec-charger
-    critical
-
-    
 service SIDESYNC_service /system/bin/ss_conn_daemon
     class main
     socket ss_conn_daemon stream 0666 system system
