@@ -302,28 +302,6 @@ on post-fs-data
     mkdir /data/bcmnfc 0700 nfc nfc
     mkdir /data/bcmnfc/param 0700 nfc nfc
 
-    # Samsung Pay
-    mkdir /efs/pfw_data 0760 spay spay
-
-    # MST/NFC Switch
-    chown spay system /dev/mst_ctrl
-    chmod 0660 /dev/mst_ctrl
-
-	#MST Factory Test
-    chown system system /sys/class/mstldo/mst_drv/transmit
-    chmod 0770 /sys/class/mstldo/mst_drv/transmit
-    
-	#MST-MFC Support
-    chown system system /sys/class/mstldo/mst_drv/mfc
-    chmod 0770 /sys/class/mstldo/mst_drv/mfc
-
-# [ SEC_SELINUX_PORTING_COMMON
-    mkdir /data/misc/audit 0775 audit system 
-
-    # start auditd
-    start auditd
-# ] SEC_SELINUX_PORTING_COMMON
-
     # ATT CIQ
     mkdir /data/iq_archive 0771 system system
     mkdir /data/iq_archive/packages 0771 system system
@@ -604,8 +582,6 @@ on boot
 on nonencrypted
     # mobicore
     mkdir /data/misc/mcRegistry 0775 system system
-    # A/B update verifier that marks a successful boot.
-    exec - root -- /system/bin/update_verifier nonencrypted
     class_start main
     class_start late_start
     
@@ -632,128 +608,16 @@ on charger
     write /sys/class/power_supply/battery/batt_update_data "/efs/Battery/battery_data.dat"
     class_start charger
 
-# KNOX KAP
-    chown system system /dev/knox_kap
-    chmod 0660 /dev/knox_kap
-
 on property:vold.decrypt=trigger_restart_framework
     # mobicore
     mkdir /data/misc/mcRegistry 0775 system system
-    # A/B update verifier that marks a successful boot.
-    exec - root -- /system/bin/update_verifier trigger_restart_framework
     class_start main
     class_start late_start
-
-# Activate Background Compaction
-on property:sys.sysctl.compact_memory=1
-    setprop sys.sysctl.compact_memory 0
-    start compact_memory
-
-service compact_memory /sbin/bgcompact
-    user root
-    seclabel u:r:sswap:s0
-    oneshot
-    disabled
 
 # deferred initcall
 service sec-sh /system/bin/sh /system/etc/init.sec.boot.sh
     class core
     user root
-    oneshot
-
-service sysmon /system/bin/sysmon
-    class core
-    user root
-	group root readproc
-    oneshot
-
-service SIDESYNC_service /system/bin/ss_conn_daemon
-    class main
-    socket ss_conn_daemon stream 0666 system system
-    user system
-    group inet net_raw
-    
-## WTL_EDM_START
-## EDM AuditLog
-service edmaudit /system/bin/edmaudit
-    class main
-    user root
-    
-## WTL_EDM_END
-
-service kap_enable /sbin/knox_changer -e
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service kap_disable /sbin/knox_changer -d
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_kap_mode=true
-    start kap_enable
-on property:security.knox_kap_mode=false
-    start kap_disable
-
-service afw_enable /sbin/knox_changer -f
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service afw_disable /sbin/knox_changer -s
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_afw_mode=true
-    start afw_enable
-on property:security.knox_afw_mode=false
-    start afw_disable
-
-
-
-service ucs_enable /sbin/knox_changer -u
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service ucs_disable /sbin/knox_changer -v
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service ucs_reset /sbin/knox_changer -w
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_ucs_mode=true
-    start ucs_enable
-on property:security.knox_ucs_mode=false
-    start ucs_disable
-on property:security.knox_ucs_mode=reset
-    start ucs_reset
-
-service vaultkeeperd /system/bin/vaultkeeperd
-    class core
-
-service ss_kb_service /system/bin/ss_kbservice_daemon
-    class main
-    user system
-    group system
-
-service scs /system/bin/scs
-    class main
-    user system
-    group system
     oneshot
 
 # MobiCore startup
@@ -763,50 +627,6 @@ service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF0000000000000
     group system
     disabled
 
-# [ SEC_SELINUX_PORTING_COMMON
-service auditd /system/bin/auditd -k
-    class main
-    seclabel u:r:auditd:s0
-    disabled
-    oneshot
-
-on property:selinux.sec.restorecon=1
-    restorecon_data_force /data
-    
-# Reload SE Android Policy for MDM
-on property:persist.security.mdm.policy=1
-# ] SEC_SELINUX_PORTING_COMMON
-
-# bootchecker
-service bootchecker /system/bin/bootchecker
-    class late_start
-    user system
-    group system log
-    oneshot
-	
-# [ Professional audio
-service apaservice /system/bin/apaservice
-	class main
-	user jack
-	group inet sdcard_rw sdcard_r media_rw shell
-
-service jackservice /system/bin/jackservice
-	class main
-	user jack
-	group audio inet shell
-# Professional audio ]
-
-# icd
-service icd /system/bin/icd
-    class main
-    user system
-    group system log
-    onrestart check_icd
-    oneshot
-
-on property:init.svc.zygote=restarting
-    restart bootchecker
-
 # strongSwan VPN
 service charon /system/bin/charon
     class main
@@ -815,41 +635,6 @@ service charon /system/bin/charon
     group vpn net_admin inet shell
     disabled
     oneshot
-
-# ccm
-service ccm /system/bin/tlc_server CCM
-  user system
-  group system 
-  disabled
-
-on property:persist.security.tlc.ccm=1  
-  start ccm
-  setprop persist.security.tlc.ccm 0
-
-# dcm
-service dcm /system/bin/tlc_server DCM
-  user system
-  group system 
-  disabled
-
-on property:persist.security.tlc.restartdcm=1
-  stop  dcm
-  setprop persist.security.tlc.dcm 1
-  setprop persist.security.tlc.restartdcm 0
-
-on property:persist.security.tlc.dcm=1  
-  start dcm
-  setprop persist.security.tlc.dcm 0
-
-# esecomm
-  service esecomm /system/bin/tlc_server ESECOMM
-  user system
-  group system 
-  disabled
-
-on property:persist.security.tlc.esecomm=1  
-  start esecomm
-  setprop persist.security.tlc.esecomm 0
 
 # IO stats Deamon
 service iod /system/bin/iod
@@ -867,29 +652,11 @@ on property:init.svc.media=restarting
 #~ check_icd
     start icd
 
-# otp
-service otp /system/bin/otp_server
-    user system
-    group system
-    disabled
-
-on property:persist.security.tlc.otp=1
-    start otp
-    setprop persist.security.tlc.otp 0	
-
 # Sensorhub service
 service sensorhubservice /system/bin/sensorhubservice
     class main
     user system
     group input
-
-# SecEDS
-service TvoutService_C /system/bin/bintvoutservice
-    class main
-    user system
-    group graphics
-on property:ro.SecEDS.enable=false
-    stop TvoutService_C
 
 #preparefbe
 service preparefbe_ce /system/bin/preparefbe storage_ce

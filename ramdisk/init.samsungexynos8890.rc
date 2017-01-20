@@ -1,7 +1,6 @@
 import init.samsungexynos8890.usb.rc
 import init.baseband.rc
 import init.rilcommon.rc
-import init.carrier.rc
 import init.wifi.rc
 import init.gps.rc
 import init.samsung.rc
@@ -341,20 +340,6 @@ on boot
     chown root system /dev/socket
     chmod 0775 /dev/socket
 
-# IPSec for VOLTE
-service ipsec-daemon /system/bin/IPSecService
-    class main
-    socket ipsec_socket stream 660 system net_admin
-    user system
-    group system net_raw inet net_admin
-
-# IMS Stack
-service imsd /system/bin/imsd
-    class main
-    socket imsd stream 0660 system system
-    user root
-    group system radio net_raw inet net_admin readproc
-
 on fs
     mount_all /fstab.samsungexynos8890
     setprop ro.crypto.fuse_sdcard true
@@ -658,25 +643,6 @@ on fs
     chown system system /sys/class/rtc/rtc0/device/adc_reg_7
     chown system system /sys/class/rtc/rtc0/device/adc_ctrl1
 
-# ARGOSD
-service argos-daemon /system/bin/argosd
-    class main
-    user system
-    group system radio
-
-service prepare_param /system/bin/prepare_param.sh /dev/block/platform/155a0000.ufs/by-name/PARAM
-    class core
-    user root
-    group root
-    seclabel u:r:prepare_param:s0
-    oneshot
-
-# SENSOR FRAMEWORK : starts fingerprintService
-service vcsFPService /system/bin/vcsFPService
-    class late_start
-    user system
-    group system
-
 # FINGERPRINT FRAMEWORK : starts fingerprintd
 service fingerprintd /system/bin/fingerprintd
     class late_start
@@ -688,18 +654,6 @@ service fingerprintd /system/bin/fingerprintd
 
 #~ # Permission for DRM Key
     #~ chmod 0644 /factory/wv.keys
-
-# MobiCore startup
-# service mobicore /system/bin/mcDriverDaemon -r /system/app/020a0000000000000000000000000000.drbin -r /system/app/mcRegistry/FFFFFFFFD00000000000000000000016.tlbin
-#     user drmrpc
-#     group drmrpc
-#     class core
-
-# RPMB
-#	service rpmbd /system/bin/rpmbd
-#	user root
-#	group drmrpc
-#	class main
 
 # umount service
 service umount_service /system/bin/umount -D /preload
@@ -752,48 +706,12 @@ service sem_daemon /system/bin/sem_daemon
     group system nfc
     disabled
 
-# DRK/CS service
-service cs_service /system/bin/cs
-    class main
-    user system
-    group system
-    disabled
-
-#on property:ro.crypto.default.encrypted=true
-#    start cs_service
-
-on property:sys.mobicoredaemon.enable=true
-    start cs_service
-    write /proc/iccc_ready 1
-
 on property:sys.boot_completed=1
     setprop security.semdaemonfinish 0
     start sem_daemon
 
 on property:security.semdaemonfinish=1
     stop sem_daemon
-
-# Temporary disabled
-#SLocation
-#	service cellgeofenced /system/bin/cellgeofenced
-#	class main
-#	socket cellgeofence seqpacket 0660 gps system
-#	user gps
-#	group system inet
-
-# emergency firmware update
-on firmware
-    mount_all /fstab.samsungexynos8890.fwup
-    class_start firmware_update
-
-# Emergency Firmware Update
-service fwup /sbin/ffu -a
-    class firmware_update
-    user root
-    group root
-    seclabel u:r:ffu:s0
-    critical
-    oneshot
 
 # Secure Storage startup
 service secure_storage /system/bin/secure_storage_daemon
@@ -808,14 +726,6 @@ on property:ro.securestorage.support=true
     chown system system /dev/.secure_storage
     start secure_storage
 
-# SSWAP
-service swapon /sbin/sswap -s -f 2048
-    class core
-    user root
-    group root
-    seclabel u:r:sswap:s0
-    oneshot
-
 # redsocks
 service redsocks /system/bin/redsocks -c /data/mptcp/redsocks.conf
     class main
@@ -828,24 +738,3 @@ service sensorhubservice /system/bin/sensorhubservice
     class main
     user system
     group input
-
-#SLocation
-	service cellgeofenced /system/bin/cellgeofenced
-	class main
-	socket cellgeofence seqpacket 0660 gps system
-	user gps
-	group system inet
-
-# ApexServer
-service apexserver /system/bin/apexserver
-	class main
-	user system
-	group system graphics media media_rw
-
-# RTC logging daemon (SEC_PM)
-service rtc_log /system/bin/rtc_log.sh
-    class main
-    user system
-    group system
-    seclabel u:r:rtc_log:s0
-    oneshot

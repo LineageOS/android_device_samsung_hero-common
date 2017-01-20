@@ -26,7 +26,6 @@ LOCAL_PATH := device/samsung/hero-common
 
 PRODUCT_PACKAGES += \
 	fstab.samsungexynos8890 \
-	init.carrier.rc \
 	init.samsung.rc \
 	init.samsungexynos8890.rc \
 	ueventd.samsungexynos8890.rc \
