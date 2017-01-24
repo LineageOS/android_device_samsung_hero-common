@@ -1,9 +1,3 @@
-DEVICE_PATH := device/samsung/hero-common
-
-# Configs
-PRODUCT_COPY_FILES += \
-        $(DEVICE_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml
-
 # Init Resources
 PRODUCT_PACKAGES += \
 	init.baseband.rc \
