@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_f52edea4",
+        "filename": "cmhw/org/cyanogenmod/hardware/VibratorHW.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2017-01-25T20:18:17Z",
+      "side": 1,
+      "message": "Don\u0027t need the if condition, you already accounted for this in isSupported().",
+      "revId": "c5e6ce42d035d20b960de2da30e3ddd3973fce6b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d52bda92",
+        "filename": "cmhw/org/cyanogenmod/hardware/VibratorHW.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2017-01-25T20:18:17Z",
+      "side": 1,
+      "message": "Don\u0027t need the if condition, you already accounted for this in isSupported().",
+      "revId": "c5e6ce42d035d20b960de2da30e3ddd3973fce6b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
