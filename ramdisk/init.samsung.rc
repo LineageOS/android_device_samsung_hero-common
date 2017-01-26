@@ -285,6 +285,10 @@ on post-fs-data
     chown system system /dev/t-base-tui
     start mobicore
 
+    # biometrics
+    mkdir /data/biometrics 0700 system system
+    restorecon /data/biometrics
+
     mkdir /data/misc/radio 0775 system radio
     mkdir /data/misc/wifi_hostapd 0771 wifi system
     mkdir /data/misc/wifi_share_profile 0771 wifi system
