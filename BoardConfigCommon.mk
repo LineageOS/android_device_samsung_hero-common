@@ -40,6 +40,7 @@ EXTENDED_FONT_FOOTPRINT := true
 
 # Image
 BOARD_KERNEL_SEPARATED_DT := true
+TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_sec
