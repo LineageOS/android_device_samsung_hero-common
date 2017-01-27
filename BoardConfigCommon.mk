@@ -38,9 +38,6 @@ EXTENDED_FONT_FOOTPRINT := true
 
 # Image
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_CUSTOM_BOOTIMG := true
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hero-common/mkbootimg.mk
-TARGET_CUSTOM_DTBTOOL := dtbToolExynos
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_sec
