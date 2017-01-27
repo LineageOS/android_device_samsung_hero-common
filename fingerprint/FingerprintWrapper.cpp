@@ -38,6 +38,8 @@ static union {
     const hw_module_t *hw_module;
 } vendor;
 
+static fingerprint_notify_t original_notify;
+
 static bool ensure_vendor_module_is_loaded(void)
 {
     android::Mutex::Autolock lock(vendor_mutex);
@@ -56,11 +58,29 @@ static bool ensure_vendor_module_is_loaded(void)
     return vendor.module != NULL;
 }
 
+static void hal_notify_wrapped(const fingerprint_msg_t *msg)
+{
+    fingerprint_msg_t *new_msg = const_cast<fingerprint_msg_t *>(msg);
+
+    switch (msg->type) {
+        case FINGERPRINT_TEMPLATE_ENROLLING:
+            new_msg->data.enroll.samples_remaining = 100 - msg->data.enroll.samples_remaining;
+            break;
+
+        default:
+            break;
+    }
+
+    return original_notify(new_msg);
+}
+
 static int set_notify(struct fingerprint_device *dev, fingerprint_notify_t notify)
 {
     device_t *device = (device_t *) dev;
 
-    return device->vendor.device->set_notify(device->vendor.device, notify);
+    original_notify = notify;
+
+    return device->vendor.device->set_notify(device->vendor.device, hal_notify_wrapped);
 }
 
 static uint64_t pre_enroll(struct fingerprint_device *dev)
