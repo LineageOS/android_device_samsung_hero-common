@@ -101,6 +101,13 @@ PRODUCT_PACKAGES += \
 	SamsungServiceMode \
 	Torch
 
+###########################################################
+### DTB TOOL
+###########################################################
+
+PRODUCT_PACKAGES += \
+	dtbhtoolExynos
+
 # Inherit board specific products
 -include $(LOCAL_PATH)/product/*.mk
 
