@@ -39,6 +39,7 @@ EXTENDED_FONT_FOOTPRINT := true
 # Image
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
+BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_sec
