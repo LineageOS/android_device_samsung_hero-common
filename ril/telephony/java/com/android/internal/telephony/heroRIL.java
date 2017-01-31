@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Dokdo Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -132,7 +132,12 @@ public class heroRIL extends RIL implements CommandsInterface {
             int np = p.readInt();
             dc.numberPresentation = DriverCall.presentationFromCLIP(np);
             dc.name = p.readString();
-            dc.namePresentation = p.readInt();
+            if (RILJ_LOGV) {
+                riljLog("responseCallList dc.name=" + dc.name);
+            }
+            // according to ril.h, namePresentation should be handled as numberPresentation;
+            dc.namePresentation = DriverCall.presentationFromCLIP(p.readInt());
+
             int uusInfoPresent = p.readInt();
             if (uusInfoPresent == 1) {
                 dc.uusInfo = new UUSInfo();
@@ -178,8 +183,9 @@ public class heroRIL extends RIL implements CommandsInterface {
         return response;
     }
 
+    @Override
     protected void
-    processUnsolicited (Parcel p) {
+    processUnsolicited (Parcel p, int type) {
         Object ret;
         int dataPosition = p.dataPosition(); // save off position within the Parcel
         int response = p.readInt();
@@ -202,6 +208,9 @@ public class heroRIL extends RIL implements CommandsInterface {
                 // Rewind the Parcel
                 p.setDataPosition(dataPosition);
                 if(DBG) Rlog.d("SHRILGET", "UNKNOWN UNSL: " + response);
+
+                // Forward responses that we are not overriding to the super class
+                super.processUnsolicited(p, type);
                 return;
         }
     }
