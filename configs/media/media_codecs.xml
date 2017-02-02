@@ -212,7 +212,7 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
     </Decoders>
 
-    <!-- Encoders>
+    <Encoders>
         <MediaCodec name="OMX.Exynos.AVC.Encoder" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
@@ -279,7 +279,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="bitrate" range="1-80000000" />
             <Limit name="concurrent-instances" max="16"/>
         </MediaCodec>
-    </Encoders -->
+    </Encoders>
     <Include href="media_codecs_google_video.xml" />
     <Include href="media_codecs_google_audio.xml" />
     <Include href="media_codecs_google_telephony.xml" />
