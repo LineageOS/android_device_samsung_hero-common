@@ -9,7 +9,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.bq.gpu_to_cpu_unsupported=1 \
 	ro.opengles.version=196609 \
-	ro.sf.lcd_density=560 \
 	debug.hwc.force_gpu=1 \
 	ro.bq.gpu_to_cpu_unsupported=1 \
 	ro.opengles.version=196609 \
