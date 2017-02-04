@@ -89,7 +89,7 @@
     </integer-array>
 
     <!-- The default iface on which to monitor data use -->
-    <string name="config_datause_iface" translatable="false">rmnet0</string>
+    <string name="config_datause_iface" translatable="false">rmnet4</string>
 
     <!-- The RadioAccessFamilies supported by the device.
          Empty is viewed as "all".  Only used on devices which
