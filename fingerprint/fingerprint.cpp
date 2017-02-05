@@ -41,6 +41,8 @@ typedef struct {
 
 bauth_server_handle_t* bauth_handle;
 
+static fingerprint_notify_t original_notify;
+
 static int load_bauth_server(void)
 {
     bauth_handle = (bauth_server_handle_t *)malloc(sizeof(bauth_server_handle_t));
@@ -62,6 +64,22 @@ static int load_bauth_server(void)
     *(void **)(&bauth_handle->ss_fingerprint_open) = dlsym(bauth_handle->libhandle,"ss_fingerprint_open");
 
     return 0;
+}
+
+static void hal_notify_convert(const fingerprint_msg_t *msg)
+{
+    fingerprint_msg_t *new_msg = const_cast<fingerprint_msg_t *>(msg);
+
+    switch (msg->type) {
+        case FINGERPRINT_TEMPLATE_ENROLLING:
+            new_msg->data.enroll.samples_remaining = 100 - msg->data.enroll.samples_remaining;
+            break;
+
+        default:
+            break;
+    }
+
+    return original_notify(new_msg);
 }
 
 static int fingerprint_close(hw_device_t *dev)
@@ -119,7 +137,8 @@ static int set_notify_callback(struct fingerprint_device *dev, fingerprint_notif
 {
     /* Decorate with locks */
     dev->notify = notify;
-    return (*bauth_handle->ss_set_notify_callback)(notify);
+    original_notify = notify;
+    return (*bauth_handle->ss_set_notify_callback)(hal_notify_convert);
 }
 
 static int fingerprint_open(const hw_module_t* module, const char *id, hw_device_t** device)
