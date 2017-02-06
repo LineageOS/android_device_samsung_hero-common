@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_0bddd270",
+        "filename": "configs/audio/mixer_paths_0.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 9560
+      },
+      "writtenOn": "2017-02-06T23:44:01Z",
+      "side": 1,
+      "message": "Missing double hyphen after Gains",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 24
+      },
+      "revId": "6b0fd84ad36f7dc4774322280246e744afd54f9e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_ebd96684",
+        "filename": "configs/audio/mixer_paths_0.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 9560
+      },
+      "writtenOn": "2017-02-06T23:44:01Z",
+      "side": 1,
+      "message": "Missing \"/\u003e\" for a few path names causing build error",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 8
+      },
+      "revId": "6b0fd84ad36f7dc4774322280246e744afd54f9e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
