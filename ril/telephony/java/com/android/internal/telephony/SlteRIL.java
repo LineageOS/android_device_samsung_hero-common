@@ -246,18 +246,20 @@ public class SlteRIL extends RIL {
             voiceSettings = p.readInt();
             dc.isVoice = (0 == voiceSettings) ? false : true;
 
-            boolean isVideo = (0 != p.readInt());   // Samsung
             int call_type = p.readInt();            // Samsung CallDetails
             int call_domain = p.readInt();          // Samsung CallDetails
             String csv = p.readString();            // Samsung CallDetails
+            if (RILJ_LOGV) {
+                riljLog(String.format("Samsung call details: type=%d, domain=%d, csv=%s",
+                               call_type, call_domain, csv));
+            }
 
             dc.isVoicePrivacy = (0 != p.readInt());
             dc.number = p.readString();
             if (RILJ_LOGV) {
                 riljLog("responseCallList dc.number=" + dc.number);
             }
-            int np = p.readInt();
-            dc.numberPresentation = DriverCall.presentationFromCLIP(np);
+            dc.numberPresentation = DriverCall.presentationFromCLIP(p.readInt());
             dc.name = p.readString();
             if (RILJ_LOGV) {
                 riljLog("responseCallList dc.name=" + dc.name);
@@ -279,12 +281,12 @@ public class SlteRIL extends RIL {
                         + new String(dc.uusInfo.getUserData()));
                 riljLogv("Incoming UUS : data (hex): "
                         + IccUtils.bytesToHexString(dc.uusInfo.getUserData()));
+
+                // Make sure there's a leading + on addresses with a TOA of 145
+                dc.number = PhoneNumberUtils.stringFromStringAndTOA(dc.number, dc.TOA);
             } else {
                 riljLogv("Incoming UUS : NOT present!");
             }
-
-            // Make sure there's a leading + on addresses with a TOA of 145
-            dc.number = PhoneNumberUtils.stringFromStringAndTOA(dc.number, dc.TOA);
 
             response.add(dc);
 
@@ -299,7 +301,8 @@ public class SlteRIL extends RIL {
 
         Collections.sort(response);
 
-        if ((num == 0) && mTestingEmergencyCall.getAndSet(false)) {
+        if ((num == 0) && mTestingEmergencyCall.getAndSet(false)
+                        && mEmergencyCallbackModeRegistrant != null) {
             if (mEmergencyCallbackModeRegistrant != null) {
                 riljLog("responseCallList: call ended, testing emergency call," +
                             " notify ECM Registrants");
