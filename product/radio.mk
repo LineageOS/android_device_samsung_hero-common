@@ -5,6 +5,12 @@ PRODUCT_PACKAGES += \
 	init.rilchip.rc \
 	init.rilcommon.rc
 
+# Packages
+PRODUCT_PACKAGES += \
+	libxml2 \
+	libprotobuf-cpp-full \
+	libsecril-client
+
 # Permissions
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml

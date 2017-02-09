@@ -1,2 +1,3 @@
 # RIL
+BOARD_MODEM_TYPE := ss333
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
