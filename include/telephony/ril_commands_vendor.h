@@ -44,3 +44,5 @@
     {RIL_REQUEST_SET_INCOMING_COMMUNICATION_BARRING, dispatchVoid, responseVoid}, // 10028
     {RIL_REQUEST_QUERY_CNAP, dispatchVoid, responseVoid}, // 10029
     {RIL_REQUEST_SET_TRANSFER_CALL, dispatchVoid, responseVoid}, // 10030
+    {RIL_REQUEST_GET_DISABLE_2G, dispatchVoid, responseVoid}, // 10031
+    {RIL_REQUEST_SET_DISABLE_2G, dispatchVoid, responseVoid}, // 10032
