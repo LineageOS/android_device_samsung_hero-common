@@ -42,9 +42,10 @@ ENABLE_CPUSETS := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # Image
-BOARD_KERNEL_SEPARATED_DT := true
-TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_sec
@@ -52,6 +53,9 @@ TARGET_UNIFIED_DEVICE := true
 
 # Packaging
 BLOCK_BASED_OTA := false
+
+# Properties
+TARGET_SYSTEM_PROP := device/samsung/hero-common/system.prop
 
 # Renderscript
 BOARD_OVERRIDE_RS_CPU_VARIANT_32 := cortex-a53.a57
