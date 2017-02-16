@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_84041a7f",
+        "filename": "overlay/frameworks/base/packages/SystemUI/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2017-02-16T10:01:56Z",
+      "side": 1,
+      "message": "can\u0027t find the definition here: https://github.com/LineageOS/android_frameworks_base/blob/cm-14.1/packages/SystemUI/res/values/config.xml#L207-L253\nSo I think they are useless",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "489b6e24bd1117428288cd778c981090289becce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
