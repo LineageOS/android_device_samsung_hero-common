@@ -280,4 +280,7 @@
 
     <!-- Flag specifying whether VoLTE TTY is supported -->
     <bool name="config_carrier_volte_tty_supported">false</bool>
+
+    <!-- Boolean indicating if current platform supports BLE peripheral mode -->
+    <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 </resources>
