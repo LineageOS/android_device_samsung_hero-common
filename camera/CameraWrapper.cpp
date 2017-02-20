@@ -29,6 +29,7 @@
 #include <hardware/hardware.h>
 #include <hardware/camera3.h>
 #include <utils/threads.h>
+#include <camera/CameraMetadata.h>
 
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
@@ -135,7 +136,31 @@ const camera_metadata_t * camera_construct_default_request_settings(
 
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device, (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
-    return VENDOR_CALL(device, construct_default_request_settings, type);
+    const camera_metadata_t *tmp;
+    tmp = VENDOR_CALL(device, construct_default_request_settings, type);
+
+    android::CameraMetadata metadata;
+    metadata = tmp;
+
+    /* enable dual pixel autofocus by default */
+    const int32_t pafMode = 1;
+    metadata.update(0x80000006, &pafMode, 1);
+
+    /* enable optical image stabilization by default */
+    const int32_t oisMode = 1;
+    metadata.update(ANDROID_LENS_OPTICAL_STABILIZATION_MODE, &oisMode, 1);
+
+    /* set video stabilization */
+    if (type == 3) {
+        const int32_t oisOpMode = 1;
+        metadata.update(0x80010000, &oisOpMode, 1);
+    /* set image stabilization */
+    } else {
+        const int32_t oisOpMode = 0;
+        metadata.update(0x80010000, &oisOpMode, 1);
+    }
+
+    return metadata.release();
 }
 
 int camera_process_capture_request(const struct camera3_device *device,
