@@ -17,6 +17,9 @@
 
 LOCAL_PATH := device/samsung/hero-common
 
+# GMS Client ID
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
