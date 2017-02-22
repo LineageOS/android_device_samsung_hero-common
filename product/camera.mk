@@ -1,3 +1,7 @@
+# Packages
+PRODUCT_PACKAGES += \
+	camera.exynos5
+
 # Permissions
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
