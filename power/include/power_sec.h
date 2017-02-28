@@ -9,12 +9,14 @@
 #define INTERACTIVE_PATH_L_HISPEED_FREQ "/sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq"
 #define INTERACTIVE_PATH_L_IO_IS_BUSY "/sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy"
 #define INTERACTIVE_PATH_L_TARGET_LOADS "/sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads"
+#define INTERACTIVE_PATH_L_PARAM_INDEX "/sys/devices/system/cpu/cpu0/cpufreq/interactive/param_index"
 #define INTERACTIVE_PATH_B_ABOVE_HISPEED_DELAY "/sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay"
 #define INTERACTIVE_PATH_B_BOOSTPULSE "/sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse"
 #define INTERACTIVE_PATH_B_GO_HISPEED_LOAD "/sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load"
 #define INTERACTIVE_PATH_B_HISPEED_FREQ "/sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq"
 #define INTERACTIVE_PATH_B_IO_IS_BUSY "/sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy"
 #define INTERACTIVE_PATH_B_TARGET_LOADS "/sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads"
+#define INTERACTIVE_PATH_B_PARAM_INDEX "/sys/devices/system/cpu/cpu4/cpufreq/interactive/param_index"
 
 /* interactive normal profile */
 #define INTERACTIVE_NORMAL_L_ABOVE_HISPEED_DELAY "19000 1274000:39000"
