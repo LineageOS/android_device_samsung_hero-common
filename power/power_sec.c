@@ -48,8 +48,6 @@
 struct sec_power_module {
 	struct power_module base;
 	pthread_mutex_t lock;
-	int boostpulse_fd_l;
-	int boostpulse_warned_l;
 };
 
 #define container_of(addr, struct_name, field_name) \
@@ -80,55 +78,23 @@ static int sysfs_write(const char *path, char *s)
 }
 
 /*[Interactive CPUFreq Governor Functions]*/
-static int is_interactive(void)
-{
-	int fd_l = open(INTERACTIVE_PATH_L_HISPEED_FREQ, O_WRONLY);
-	int fd_b = open(INTERACTIVE_PATH_B_HISPEED_FREQ, O_WRONLY);
-
-	if (fd_l < 0 || fd_b < 0)
-		return 0;
-
-	return 1;
-}
-
 static int interactive_set_profile(int profile)
 {
-	if (!(&is_interactive))
-		return -EINVAL;
-
 	switch (profile) {
-	case PROFILE_POWER_SAVE:
-		sysfs_write(INTERACTIVE_PATH_L_ABOVE_HISPEED_DELAY, INTERACTIVE_LOW_L_ABOVE_HISPEED_DELAY);
-		sysfs_write(INTERACTIVE_PATH_L_GO_HISPEED_LOAD, INTERACTIVE_LOW_L_GO_HISPEED_LOAD);
-		sysfs_write(INTERACTIVE_PATH_L_HISPEED_FREQ, INTERACTIVE_LOW_L_HISPEED_FREQ);
-		sysfs_write(INTERACTIVE_PATH_L_TARGET_LOADS, INTERACTIVE_LOW_L_TARGET_LOADS);
-		sysfs_write(INTERACTIVE_PATH_B_ABOVE_HISPEED_DELAY, INTERACTIVE_LOW_B_ABOVE_HISPEED_DELAY);
-		sysfs_write(INTERACTIVE_PATH_B_GO_HISPEED_LOAD, INTERACTIVE_LOW_B_GO_HISPEED_LOAD);
-		sysfs_write(INTERACTIVE_PATH_B_HISPEED_FREQ, INTERACTIVE_LOW_B_HISPEED_FREQ);
-		sysfs_write(INTERACTIVE_PATH_B_TARGET_LOADS, INTERACTIVE_LOW_B_TARGET_LOADS);
-                break;
-
 	case PROFILE_NORMAL:
-		sysfs_write(INTERACTIVE_PATH_L_ABOVE_HISPEED_DELAY, INTERACTIVE_NORMAL_L_ABOVE_HISPEED_DELAY);
-		sysfs_write(INTERACTIVE_PATH_L_GO_HISPEED_LOAD, INTERACTIVE_NORMAL_L_GO_HISPEED_LOAD);
-		sysfs_write(INTERACTIVE_PATH_L_HISPEED_FREQ, INTERACTIVE_NORMAL_L_HISPEED_FREQ);
-		sysfs_write(INTERACTIVE_PATH_L_TARGET_LOADS, INTERACTIVE_NORMAL_L_TARGET_LOADS);
-		sysfs_write(INTERACTIVE_PATH_B_ABOVE_HISPEED_DELAY, INTERACTIVE_NORMAL_B_ABOVE_HISPEED_DELAY);
-		sysfs_write(INTERACTIVE_PATH_B_GO_HISPEED_LOAD, INTERACTIVE_NORMAL_B_GO_HISPEED_LOAD);
-		sysfs_write(INTERACTIVE_PATH_B_HISPEED_FREQ, INTERACTIVE_NORMAL_B_HISPEED_FREQ);
-		sysfs_write(INTERACTIVE_PATH_B_TARGET_LOADS, INTERACTIVE_NORMAL_B_TARGET_LOADS);
-                break;
+		sysfs_write(INTERACTIVE_PATH_L_PARAM_INDEX, "0");
+		sysfs_write(INTERACTIVE_PATH_B_PARAM_INDEX, "0");
+		break;
+
+	case PROFILE_POWER_SAVE:
+		sysfs_write(INTERACTIVE_PATH_L_PARAM_INDEX, "1");
+		sysfs_write(INTERACTIVE_PATH_B_PARAM_INDEX, "1");
+		break;
 
 	case PROFILE_HIGH_PERFORMANCE:
-		sysfs_write(INTERACTIVE_PATH_L_ABOVE_HISPEED_DELAY, INTERACTIVE_HIGH_L_ABOVE_HISPEED_DELAY);
-		sysfs_write(INTERACTIVE_PATH_L_GO_HISPEED_LOAD, INTERACTIVE_HIGH_L_GO_HISPEED_LOAD);
-		sysfs_write(INTERACTIVE_PATH_L_HISPEED_FREQ, INTERACTIVE_HIGH_L_HISPEED_FREQ);
-		sysfs_write(INTERACTIVE_PATH_L_TARGET_LOADS, INTERACTIVE_HIGH_L_TARGET_LOADS);
-		sysfs_write(INTERACTIVE_PATH_B_ABOVE_HISPEED_DELAY, INTERACTIVE_HIGH_B_ABOVE_HISPEED_DELAY);
-		sysfs_write(INTERACTIVE_PATH_B_GO_HISPEED_LOAD, INTERACTIVE_HIGH_B_GO_HISPEED_LOAD);
-		sysfs_write(INTERACTIVE_PATH_B_HISPEED_FREQ, INTERACTIVE_HIGH_B_HISPEED_FREQ);
-		sysfs_write(INTERACTIVE_PATH_B_TARGET_LOADS, INTERACTIVE_HIGH_B_TARGET_LOADS);
-                break;
+		sysfs_write(INTERACTIVE_PATH_L_PARAM_INDEX, "2");
+		sysfs_write(INTERACTIVE_PATH_B_PARAM_INDEX, "2");
+		break;
 
 	default:
 		break;
@@ -139,45 +105,47 @@ static int interactive_set_profile(int profile)
 
 static void interactive_power_init(struct sec_power_module __unused * sec)
 {
-	/* initialize generic parameters first */
-	sysfs_write("/sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate", "20000");
-	sysfs_write("/sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack", "20000");
-	sysfs_write("/sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time", "40000");
-	sysfs_write("/sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration", "40000");
-	sysfs_write("/sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate", "20000");
-	sysfs_write("/sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack", "20000");
-	sysfs_write("/sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time", "40000");
-	sysfs_write("/sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration", "40000");
+	/* load modes */
+	/* normal */
+	sysfs_write(INTERACTIVE_PATH_L_PARAM_INDEX, "0");
+	sysfs_write(INTERACTIVE_PATH_L_ABOVE_HISPEED_DELAY, INTERACTIVE_NORMAL_L_ABOVE_HISPEED_DELAY);
+	sysfs_write(INTERACTIVE_PATH_L_GO_HISPEED_LOAD, INTERACTIVE_NORMAL_L_GO_HISPEED_LOAD);
+	sysfs_write(INTERACTIVE_PATH_L_HISPEED_FREQ, INTERACTIVE_NORMAL_L_HISPEED_FREQ);
+	sysfs_write(INTERACTIVE_PATH_L_TARGET_LOADS, INTERACTIVE_NORMAL_L_TARGET_LOADS);
+	sysfs_write(INTERACTIVE_PATH_B_PARAM_INDEX, "0");
+	sysfs_write(INTERACTIVE_PATH_B_ABOVE_HISPEED_DELAY, INTERACTIVE_NORMAL_B_ABOVE_HISPEED_DELAY);
+	sysfs_write(INTERACTIVE_PATH_B_GO_HISPEED_LOAD, INTERACTIVE_NORMAL_B_GO_HISPEED_LOAD);
+	sysfs_write(INTERACTIVE_PATH_B_HISPEED_FREQ, INTERACTIVE_NORMAL_B_HISPEED_FREQ);
+	sysfs_write(INTERACTIVE_PATH_B_TARGET_LOADS, INTERACTIVE_NORMAL_B_TARGET_LOADS);
+
+	/* power save */
+	sysfs_write(INTERACTIVE_PATH_L_PARAM_INDEX, "1");
+	sysfs_write(INTERACTIVE_PATH_L_ABOVE_HISPEED_DELAY, INTERACTIVE_LOW_L_ABOVE_HISPEED_DELAY);
+	sysfs_write(INTERACTIVE_PATH_L_GO_HISPEED_LOAD, INTERACTIVE_LOW_L_GO_HISPEED_LOAD);
+	sysfs_write(INTERACTIVE_PATH_L_HISPEED_FREQ, INTERACTIVE_LOW_L_HISPEED_FREQ);
+	sysfs_write(INTERACTIVE_PATH_L_TARGET_LOADS, INTERACTIVE_LOW_L_TARGET_LOADS);
+	sysfs_write(INTERACTIVE_PATH_B_PARAM_INDEX, "1");
+	sysfs_write(INTERACTIVE_PATH_B_ABOVE_HISPEED_DELAY, INTERACTIVE_LOW_B_ABOVE_HISPEED_DELAY);
+	sysfs_write(INTERACTIVE_PATH_B_GO_HISPEED_LOAD, INTERACTIVE_LOW_B_GO_HISPEED_LOAD);
+	sysfs_write(INTERACTIVE_PATH_B_HISPEED_FREQ, INTERACTIVE_LOW_B_HISPEED_FREQ);
+	sysfs_write(INTERACTIVE_PATH_B_TARGET_LOADS, INTERACTIVE_LOW_B_TARGET_LOADS);
+
+	/* high performance */
+	sysfs_write(INTERACTIVE_PATH_L_PARAM_INDEX, "2");
+	sysfs_write(INTERACTIVE_PATH_L_ABOVE_HISPEED_DELAY, INTERACTIVE_HIGH_L_ABOVE_HISPEED_DELAY);
+	sysfs_write(INTERACTIVE_PATH_L_GO_HISPEED_LOAD, INTERACTIVE_HIGH_L_GO_HISPEED_LOAD);
+	sysfs_write(INTERACTIVE_PATH_L_HISPEED_FREQ, INTERACTIVE_HIGH_L_HISPEED_FREQ);
+	sysfs_write(INTERACTIVE_PATH_L_TARGET_LOADS, INTERACTIVE_HIGH_L_TARGET_LOADS);
+	sysfs_write(INTERACTIVE_PATH_B_PARAM_INDEX, "2");
+	sysfs_write(INTERACTIVE_PATH_B_ABOVE_HISPEED_DELAY, INTERACTIVE_HIGH_B_ABOVE_HISPEED_DELAY);
+	sysfs_write(INTERACTIVE_PATH_B_GO_HISPEED_LOAD, INTERACTIVE_HIGH_B_GO_HISPEED_LOAD);
+	sysfs_write(INTERACTIVE_PATH_B_HISPEED_FREQ, INTERACTIVE_HIGH_B_HISPEED_FREQ);
+	sysfs_write(INTERACTIVE_PATH_B_TARGET_LOADS, INTERACTIVE_HIGH_B_TARGET_LOADS);
 
 	/* use normal profile by default */
 	interactive_set_profile(PROFILE_NORMAL);
 
 	current_power_profile == PROFILE_NORMAL;
-}
-
-static int interactive_boostpulse(struct sec_power_module *sec)
-{
-	char buf[80];
-	int len_l;
-
-	if (sec->boostpulse_fd_l < 0) {
-		sec->boostpulse_fd_l = open(INTERACTIVE_PATH_L_BOOSTPULSE, O_WRONLY);
-		if (sec->boostpulse_fd_l < 0) {
-			if (!sec->boostpulse_warned_l) {
-				strerror_r(errno, buf, sizeof(buf));
-				ALOGE("Error opening %s: %s\n", INTERACTIVE_PATH_L_BOOSTPULSE, buf);
-				sec->boostpulse_warned_l = 1;
-			}
-		}
-	}
-
-	len_l = write(sec->boostpulse_fd_l, "1", 1);
-
-	if (len_l < 0) {
-		return -1;
-	}
-
-	return 0;
 }
 
 /*[Generic Functions]*/
@@ -206,14 +174,6 @@ static void power_set_interactive(struct power_module __unused * module, int on)
 	ALOGV("power_set_interactive: %d\n", on);
 
 	set_input_device_state(on ? 1 : 0);
-
-	/* Plug out big cores when screen is off */
-	sysfs_write("/sys/power/cpuhotplug/max_online_cpu", on ? "8" : "5");
-
-	/*
-	 * Switch to power-saving profile when screen is off.
-	 */
-	interactive_set_profile(on ? current_power_profile : PROFILE_POWER_SAVE);
 
 	sysfs_write(INTERACTIVE_PATH_L_IO_IS_BUSY, on ? "1" : "0");
 	sysfs_write(INTERACTIVE_PATH_B_IO_IS_BUSY, on ? "1" : "0");
@@ -263,7 +223,6 @@ static void sec_power_hint(struct power_module *module, power_hint_t hint, void 
 	pthread_mutex_lock(&sec->lock);
 	switch (hint) {
 		case POWER_HINT_INTERACTION:
-			interactive_boostpulse(sec);
 			break;
 
 		case POWER_HINT_VSYNC:
