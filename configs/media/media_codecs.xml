@@ -92,7 +92,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="size" min="32x32" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="blocks-per-second" min="1" max="480541" />
+            <Limit name="blocks-per-second" min="1" max="480542" />
             <Limit name="bitrate" range="1-80000000" />
             <Limit name="concurrent-instances" max="16" />
             <Feature name="adaptive-playback" />
@@ -120,7 +120,13 @@ Only the three quirks included above are recognized at this point:
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="2754000" />
             <Limit name="bitrate" range="1-120000000" />
-            <Limit name="concurrent-instances" max="16"/>
+            <!-- for skypeHD -->
+            <Limit name="vt-version" value="1.0" />  <!-- TODO: need to discuss -->
+            <Limit name="vt-low-latency" value="1" />
+            <Limit name="vt-max-instances" value="16" />
+            <Limit name="vt-max-level" value="65536" />  <!-- AVCLevel52(0x10000) // depends on MFC version -->
+            <Limit name="vt-max-macroblock-processing-rate" value="1944000" />  <!-- same as blocks-per-second // depends on MFC version, but, it is restricted to 1944000 that is max value allowed -->
+            <Limit name="concurrent-instances" max="16" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.avc.dec.secure" type="video/avc" >
@@ -133,7 +139,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="2754000" />
             <Limit name="bitrate" range="1-120000000" />
-            <Limit name="concurrent-instances" max="2"/>
+            <Limit name="concurrent-instances" max="2" />
             <Feature name="adaptive-playback" />
             <Feature name="secure-playback" required="true" />
         </MediaCodec>
@@ -147,7 +153,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="243000" />
             <Limit name="bitrate" range="1-80000000" />
-            <Limit name="concurrent-instances" max="16"/>
+            <Limit name="concurrent-instances" max="16" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.hevc.dec" type="video/hevc" >
@@ -160,8 +166,22 @@ Only the three quirks included above are recognized at this point:
             <Limit name="block-size" value="64x64" />
             <Limit name="blocks-per-second" min="1" max="2754000" />
             <Limit name="bitrate" range="1-120000000" />
-            <Limit name="concurrent-instances" max="16"/>
+            <Limit name="concurrent-instances" max="16" />
             <Feature name="adaptive-playback" />
+        </MediaCodec>
+        <MediaCodec name="OMX.Exynos.hevc.dec.secure" type="video/hevc" >
+            <Quirk name="requires-allocate-on-input-ports" />
+            <Quirk name="requires-allocate-on-output-ports" />
+            <Limit name="size" min="64x64" max="3840x2160" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
+            <Quirk name="video-controller-check-enable" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="64x64" />
+            <Limit name="blocks-per-second" min="1" max="2754000" />
+            <Limit name="bitrate" range="1-120000000" />
+            <Limit name="concurrent-instances" max="2"/>
+            <Feature name="adaptive-playback" />
+            <Feature name="secure-playback" required="true" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.vp9.dec" type="video/x-vnd.on2.vp9" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -172,6 +192,21 @@ Only the three quirks included above are recognized at this point:
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="64x64" />
             <Limit name="blocks-per-second" min="1" max="243000" />
+            <Limit name="bitrate" range="1-80000000" />
+            <Limit name="concurrent-instances" max="16" />
+            <Feature name="adaptive-playback" />
+        </MediaCodec>
+        <MediaCodec name="OMX.Exynos.vc1.dec" >
+            <Type name="video/wvc1" />
+            <Type name="video/x-ms-wmv" />
+            <Quirk name="requires-allocate-on-input-ports" />
+            <Quirk name="requires-allocate-on-output-ports" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
+            <Quirk name="video-controller-check-enable" />
+            <Limit name="size" min="32x32" max="1920x1088" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" min="1" max="979200" />
             <Limit name="bitrate" range="1-80000000" />
             <Limit name="concurrent-instances" max="16"/>
             <Feature name="adaptive-playback" />
@@ -189,28 +224,40 @@ Only the three quirks included above are recognized at this point:
             <Limit name="blocks-per-second" min="1" max="2211840" />
             <Limit name="bitrate" range="1-120000000" />
             <Limit name="concurrent-instances" max="16" />
+            <!-- for skypeHD -->
+            <Limit name="vt-version" value="1.0" />  <!-- TODO: need to discuss -->
+            <Limit name="vt-low-latency" value="1" />
+            <Limit name="vt-max-instances" value="16" />
+            <Limit name="vt-max-temporal-layer-count" value="7" />
+            <Limit name="vt-max-ref-frames" value="4" />
+            <Limit name="vt-max-ltr-frames" value="2" />
+            <Limit name="vt-max-level" value="65536" />  <!-- AVCLevel52(0x10000) // depends on MFC version -->
+            <Limit name="vt-slice-control-modes-bitmask" value="3" />  <!-- supports MB and Byte mode -->
+            <Limit name="vt-max-macroblock-processing-rate" value="1944000" />  <!-- same as blocks-per-second // depends on MFC version, but, it is restricted to 1944000 that is max value allowed -->
+            <Limit name="vt-down-scale-factor" value="0" />
+            <Limit name="vt-min-scale-factor" value="0" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.H263.Encoder" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="video-controller-check-enable" />
-            <Limit name="size" min="32x32" max="1920x1088" />
+            <Limit name="size" min="32x32" max="2048x1152" />
             <Limit name="alignment" value="4x4" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="854296" />
             <Limit name="bitrate" range="1-80000000" />
-            <Limit name="concurrent-instances" max="16"/>
+            <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.MPEG4.Encoder" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="video-controller-check-enable" />
-            <Limit name="size" min="32x32" max="1920x1088" />
+            <Limit name="size" min="32x32" max="2048x2048" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="480542" />
             <Limit name="bitrate" range="1-80000000" />
-            <Limit name="concurrent-instances" max="16"/>	    
+            <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.VP8.Encoder" type="video/x-vnd.on2.vp8" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -221,7 +268,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="243000" />
             <Limit name="bitrate" range="1-80000000" />
-            <Limit name="concurrent-instances" max="16"/>
+            <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.HEVC.Encoder" type="video/hevc" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -232,7 +279,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="block-size" value="32x32" />
             <Limit name="blocks-per-second" min="1" max="2211840" />
             <Limit name="bitrate" range="1-120000000" />
-            <Limit name="concurrent-instances" max="16" />	    
+            <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.Exynos.VP9.Encoder" type="video/x-vnd.on2.vp9" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -243,7 +290,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="block-size" value="64x64" />
             <Limit name="blocks-per-second" min="1" max="243000" />
             <Limit name="bitrate" range="1-80000000" />
-            <Limit name="concurrent-instances" max="16"/>
+            <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
     </Encoders>
     <Include href="media_codecs_google_video.xml" />
