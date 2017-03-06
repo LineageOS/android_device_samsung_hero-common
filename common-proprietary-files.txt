@@ -64,21 +64,64 @@ lib/libexynosv4l2.so
 lib64/libexynosv4l2.so
 lib/libsensorlistener.so
 lib64/libsensorlistener.so
+lib/libhwjpeg.so
+lib64/libhwjpeg.so
+lib/libcsc.so
+lib64/libcsc.so
+lib/libexynosgscaler.so
+lib64/libexynosgscaler.so
+lib/libexynosscaler.so
+lib64/libexynosscaler.so
+
+# Camera Plugins
 lib/libuniapi.so
 lib64/libuniapi.so
 lib/libuniplugin.so
 lib64/libuniplugin.so
-lib/libhwjpeg.so
-lib64/libhwjpeg.so
+lib/libldc_core.so
+lib64/libldc_core.so
+lib/libldc_interface.so
+lib/libsomp.so
+lib64/libsomp.so
+lib/libsmartfocusengine.so
+lib64/libsmartfocusengine.so
+lib/libsmartfocus_interface.so
+lib64/libsmartfocus_interface.so
+lib/libblurdetection.so
+lib64/libblurdetection.so
+lib/libblurdetection_interface.so
+lib64/libblurdetection_interface.so
+lib/libimage_flashed_lls.so
+lib64/libimage_flashed_lls.so
+lib/libflashedlls_interface.so
+lib64/libflashedlls_interface.so
+lib/libhighlight_interface.so
+lib64/libhighlight_interface.so
+lib/libHighLightVideo.so
+lib64/libHighLightVideo.so
+lib/libOpenCv.so
+lib64/libOpenCv.so
+lib/libHpr_RecFace_dl_v1.0.so
+lib64/libHpr_RecFace_dl_v1.0.so
+lib/libHpr_TaskFaceClustering_hierarchical_v1.0.so
+lib64/libHpr_TaskFaceClustering_hierarchical_v1.0.so
+vendor/lib/libHpr_LocFace_mvfd_v1.0.so
+vendor/lib64/libHpr_LocFace_mvfd_v1.0.so
+vendor/lib/libHpr_LocLandmark_sdm_v1.0.so
+vendor/lib64/libHpr_LocLandmark_sdm_v1.0.so
+vendor/lib/libSEF.so
+vendor/lib64/libSEF.so
 
 # Fingerprint
 app/mcRegistry/ffffffff00000000000000000000000e.tlbin
 app/mcRegistry/ffffffffd0000000000000000000000e.tlbin
-bin/fingerprintd
-lib64/hw/fingerprint.default.so
+lib/libbauthserver.so
 lib64/libbauthserver.so
+lib/libbauthtzcommon.so
 lib64/libbauthtzcommon.so
+lib/libegis_fp_normal_sensor_test.so
 lib64/libegis_fp_normal_sensor_test.so
+lib/libsynaFpSensorTestNwd.so
 lib64/libsynaFpSensorTestNwd.so
 
 # GPS
@@ -93,10 +136,10 @@ lib64/libfloatingfeature.so
 # Graphics
 vendor/lib/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_mali.so
-vendor/lib/hw/vulkan.exynos5.so
-vendor/lib64/hw/vulkan.exynos5.so
-vendor/lib/libOpenCL.so.1.1
-vendor/lib64/libOpenCL.so.1.1
+#vendor/lib/hw/vulkan.exynos5.so
+#vendor/lib64/hw/vulkan.exynos5.so
+#vendor/lib/libOpenCL.so.1.1
+#vendor/lib64/libOpenCL.so.1.1
 
 # Media
 vendor/firmware/companion_2l1_master_setfile.bin
@@ -116,6 +159,9 @@ vendor/firmware/setfile_2l1.bin
 vendor/firmware/setfile_4e6.bin
 vendor/firmware/setfile_imx260.bin
 
+# Media DRM
+vendor/lib/mediadrm/libwvdrmengine.so
+
 # Mobicore
 app/FFFFFFFF000000000000000000000001.drbin
 app/mcRegistry/ffffffffd00000000000000000000016.tlbin
@@ -132,6 +178,10 @@ lib64/hw/nfc_nci.universal8890.so
 vendor/firmware/nfc/sec_s3nrn81_firmware.bin
 
 # OMX
+lib/libExynosOMX_Core.so
+lib64/libExynosOMX_Core.so
+lib/libExynosOMX_Resourcemanager.so
+lib64/libExynosOMX_Resourcemanager.so
 lib64/omx/libOMX.Exynos.AVC.Decoder.so
 lib64/omx/libOMX.Exynos.AVC.Encoder.so
 lib64/omx/libOMX.Exynos.HEVC.Decoder.so
@@ -162,17 +212,11 @@ lib/libril.so
 lib/libsec-ril.so
 lib/libsec-ril-dsds.so
 lib/libsecnativefeature.so
-lib/libsecril-client.so
-lib/libxml2.so
-lib/libprotobuf-cpp-full.so
 lib64/libreference-ril.so
 lib64/libril.so
 lib64/libsec-ril.so
 lib64/libsec-ril-dsds.so
 lib64/libsecnativefeature.so
-lib64/libsecril-client.so
-lib64/libxml2.so
-lib64/libprotobuf-cpp-full.so
 
 # Sensors
 lib64/libhr.so
@@ -187,6 +231,76 @@ lib64/hw/sensors.universal8890.so
 lib64/libagc_max.so
 lib64/libmaxflicker.so
 lib64/libsensorservice.so
+
+# SOMX
+lib64/libarac.so
+lib64/libsavsac.so
+lib64/libsavscmn.so
+lib64/libsavsff.so
+lib64/libsavsmeta.so
+lib64/libsavsvc.so
+lib64/libsnaace.so
+lib64/libsnamrnb.so
+lib64/libsnamrwb.so
+lib64/libsomx263dsw.so
+lib64/libsomx264dsw.so
+lib64/libsomxaacd.so
+lib64/libsomxaace.so
+lib64/libsomxadpcmd.so
+lib64/libsomxamrd.so
+lib64/libsomxcmn.so
+lib64/libsomxcore.so
+lib64/libsomxevrcd.so
+lib64/libsomxevrce.so
+lib64/libsomxflacd.so
+lib64/libsomxhevcdsw.so
+lib64/libsomxmp3d.so
+lib64/libsomxmp43d.so
+lib64/libsomxmp4vdsw.so
+lib64/libsomxnaace.so
+lib64/libsomxqcelpd.so
+lib64/libsomxqcelpe.so
+lib64/libsomxsr263d.so
+lib64/libsomxvc1dsw.so
+lib64/libsomxvp8d.so
+lib64/libsomxwmad.so
+lib64/libsomxwmv7d.so
+lib64/libsomxwmv8d.so
+lib64/libsxqk.so
+lib/libarac.so
+lib/libsavsac.so
+lib/libsavscmn.so
+lib/libsavsff.so
+lib/libsavsmeta.so
+lib/libsavsvc.so
+lib/libsnaace.so
+lib/libsnamrnb.so
+lib/libsnamrwb.so
+lib/libsomx263dsw.so
+lib/libsomx264dsw.so
+lib/libsomxaacd.so
+lib/libsomxaace.so
+lib/libsomxadpcmd.so
+lib/libsomxamrd.so
+lib/libsomxcmn.so
+lib/libsomxcore.so
+lib/libsomxevrcd.so
+lib/libsomxevrce.so
+lib/libsomxflacd.so
+lib/libsomxhevcdsw.so
+lib/libsomxmp3d.so
+lib/libsomxmp43d.so
+lib/libsomxmp4vdsw.so
+lib/libsomxnaace.so
+lib/libsomxqcelpd.so
+lib/libsomxqcelpe.so
+lib/libsomxsr263d.so
+lib/libsomxvc1dsw.so
+lib/libsomxvp8d.so
+lib/libsomxwmad.so
+lib/libsomxwmv7d.so
+lib/libsomxwmv8d.so
+lib/libsxqk.so
 
 # Surface Composer
 lib/libion.so
