@@ -7,3 +7,5 @@ allow cameraserver camera_device:chr_file { read open getattr };
 allow camera_device sysfs:filesystem associate;
 
 allow cameraserver camera_data_file:file { read open };
+
+allow cameraserver media_rw_data_file:dir search;
