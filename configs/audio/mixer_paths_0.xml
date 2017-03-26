@@ -181,6 +181,15 @@
 		<ctl name="HP Switch" value="1" />
 	</path>
 
+	<path name="media-bt-sco-headset">
+		<ctl name="ISRC2 FSL" value="SYNCCLK rate 2" />
+		<ctl name="ISRC2 FSH" value="SYNCCLK rate 1" />
+		<ctl name="AIF3TX1 Input 1" value="ISRC2DEC1" />
+		<ctl name="AIF3TX2 Input 1" value="ISRC2DEC2" />
+		<ctl name="ISRC2DEC1 Input" value="AIF1RX1" />
+		<ctl name="ISRC2DEC2 Input" value="AIF1RX2" />
+	</path>
+
 	<!-- CP Call Output -->
 	<!-- NB -->
 	<path name="incall_nb-handset">
@@ -639,6 +648,11 @@
 		<ctl name="HPOUT1R Input 1 Volume" value="32"/>
 	</path>
 
+	<path name="gain-media-bt-sco-headset">
+		<ctl name="AIF3TX1 Input 1 Volume" value="32" />
+		<ctl name="AIF3TX2 Input 1 Volume" value="32" />
+	</path>
+
 	<path name="gain-incall_nb-handset">
 		<ctl name="HPOUT3L Input 1 Volume" value="32" />
 		<ctl name="HPOUT3R Input 1 Volume" value="32" />
@@ -895,14 +909,19 @@
 		<path name="gain-incall_wb-headset"/>
 	</path>
 
-	<path name="bt-sco-headset">
+	<path name="voice-bt-sco-headset">
 		<path name="incall_nb-bt-sco-headset"/>
 		<path name="gain-incall_nb-bt-sco-headset"/>
 	</path>
 
-	<path name="bt-sco-headset-wb">
+	<path name="voice-bt-sco-headset-wb">
 		<path name="incall_wb-bt-sco-headset"/>
 		<path name="gain-incall_wb-bt-sco-headset"/>
+	</path>
+
+	<path name="bt-sco-headset">
+		<path name="media-bt-sco-headset"/>
+		<path name="gain-media-bt-sco-headset"/>
 	</path>
 
 	<!-- Input -->
@@ -961,14 +980,19 @@
 		<path name="gain-incall_wb-headset-mic"/>
 	</path>
 
-	<path name="bt-sco-mic">
+	<path name="voice-bt-sco-mic">
 		<path name="incall_nb-bt-sco-headset-in"/>
 		<path name="gain-incall_nb-bt-sco-headset-in"/>
 	</path>
 
-	<path name="bt-sco-mic-wb">
+	<path name="voice-bt-sco-mic-wb">
 		<path name="incall_wb-bt-sco-headset-in"/>
 		<path name="gain-incall_wb-bt-sco-headset-in"/>
+	</path>
+
+	<path name="bt-sco-mic">
+		<path name="media-bt-sco-headset-in"/>
+		<path name="gain-media-bt-sco-headset-in"/>
 	</path>
 
 	<path name="camcorder-mic">
