@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_44c84374",
+        "filename": "ramdisk/recovery.fstab",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2017-05-09T19:49:43Z",
+      "side": 1,
+      "message": "whitespace change",
+      "revId": "41a52c62af4630efd5b3b6d8c3d94fbc9569f4c7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
