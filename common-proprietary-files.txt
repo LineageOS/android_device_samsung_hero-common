@@ -228,3 +228,6 @@ etc/wifi/nvram_net.txt_murata_c0
 etc/wifi/nvram_net.txt_wisol
 etc/wifi/nvram_net.txt_wisol_b1
 etc/wifi/nvram_net.txt_wisol_c0
+
+# CP Boot Daemon
+sbin/cbd
