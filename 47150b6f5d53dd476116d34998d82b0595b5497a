@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_44bba072",
+        "filename": "product/usb.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2017-06-01T21:25:52Z",
+      "side": 0,
+      "message": "No longer relevant.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "47150b6f5d53dd476116d34998d82b0595b5497a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
