@@ -466,8 +466,8 @@
 		<ctl name="DSP3 Firmware" value="TX_NBWB"/>
 		<ctl name="DSP2 Virtual Input" value="Shared Memory"/>
 		<ctl name="DSP3 Virtual Input" value="Shared Memory"/>
-		<ctl name="DSP3L Input 1" value="ISRC1DEC2"/>
-		<ctl name="DSP3R Input 1" value="ISRC1DEC1"/>
+		<ctl name="DSP3L Input 1" value="ISRC1DEC1"/>
+		<ctl name="DSP3R Input 1" value="ISRC1DEC2"/>
 		<ctl name="DSP3 Aux 1" value="ISRC1DEC4"/>
 		<ctl name="ISRC3INT1 Input" value="DSP3.1"/>
 		<ctl name="ASRC1IN1L Input" value="ISRC3INT1"/>
@@ -579,8 +579,8 @@
 		<ctl name="DSP3 Firmware" value="TX_NBWB"/>
 		<ctl name="DSP2 Virtual Input" value="Shared Memory"/>
 		<ctl name="DSP3 Virtual Input" value="Shared Memory"/>
-		<ctl name="DSP3L Input 1" value="ISRC2DEC2"/>
-		<ctl name="DSP3R Input 1" value="ISRC2DEC1"/>
+		<ctl name="DSP3L Input 1" value="ISRC2DEC1"/>
+		<ctl name="DSP3R Input 1" value="ISRC2DEC2"/>
 		<ctl name="DSP3 Aux 1" value="ISRC2DEC4"/>
 		<ctl name="ASRC1IN1L Input" value="DSP3.1"/>
 		<ctl name="ASRC1IN1R Input" value="DSP3.1"/>
