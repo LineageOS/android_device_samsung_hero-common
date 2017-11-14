@@ -50,8 +50,8 @@ etc/firmware/moon-dsp6-ez2-control.wmfw
 etc/firmware/moon-dsp6-lpsd-control.bin
 
 # Bluetooth
-vendor/firmware/bcm4359C0_V0076.0133_murata.hcd
-vendor/firmware/bcm4359C0_V0076.0132_semco.hcd
+vendor/firmware/bcm4359C0_V0118.0172_murata.hcd
+vendor/firmware/bcm4359C0_V0118.0173_semco.hcd
 
 # Camera
 lib/hw/camera.exynos5.so
@@ -70,16 +70,53 @@ lib/libuniplugin.so
 lib64/libuniplugin.so
 lib/libhwjpeg.so
 lib64/libhwjpeg.so
+lib/libblurdetection.so
+lib64/libblurdetection.so
+lib/libblurdetection_interface.so
+lib64/libblurdetection_interface.so
+lib/libflashedlls_interface.so
+lib64/libflashedlls_interface.so
+lib/libhighlight_interface.so
+lib64/libhighlight_interface.so
+lib/libHighLightVideo.so
+lib64/libHighLightVideo.so
+lib/libHpr_RecFace_dl_v1.0.so
+lib64/libHpr_RecFace_dl_v1.0.so
+lib/libHpr_TaskFaceClustering_hierarchical_v1.0.so
+lib64/libHpr_TaskFaceClustering_hierarchical_v1.0.so
+lib/libimage_flashed_lls.so
+lib64/libimage_flashed_lls.so
+lib/libsmartfocus_interface.so
+lib64/libsmartfocus_interface.so
+lib/libsmartfocusengine.so
+lib64/libsmartfocusengine.so
+lib/libexynosgscaler.so
+lib64/libexynosgscaler.so
+lib/libexynosscaler.so
+lib64/libexynosscaler.so
+lib/libldc_core.so
+lib64/libldc_core.so
+lib/libldc_interface.so
+vendor/lib/libOpenCv.so:lib/libOpenCv.so
+vendor/lib64/libOpenCv.so:lib64/libOpenCv.so
+vendor/lib/libsomp.so:lib/libsomp.so
+vendor/lib64/libsomp.so:lib64/libsomp.so
+vendor/lib/libHpr_LocFace_mvfd_v1.0.so
+vendor/lib64/libHpr_LocFace_mvfd_v1.0.so
+vendor/lib/libHpr_LocLandmark_sdm_v1.0.so
+vendor/lib64/libHpr_LocLandmark_sdm_v1.0.so
 
 # Fingerprint
 app/mcRegistry/ffffffff00000000000000000000000e.tlbin
 app/mcRegistry/ffffffffd0000000000000000000000e.tlbin
-bin/fingerprintd
-lib64/hw/fingerprint.default.so
 lib64/libbauthserver.so
 lib64/libbauthtzcommon.so
 lib64/libegis_fp_normal_sensor_test.so
 lib64/libsynaFpSensorTestNwd.so
+lib/libbauthserver.so
+lib/libbauthtzcommon.so
+lib/libegis_fp_normal_sensor_test.so
+lib/libsynaFpSensorTestNwd.so
 
 # GPS
 bin/gps.cer
@@ -93,28 +130,46 @@ lib64/libfloatingfeature.so
 # Graphics
 vendor/lib/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_mali.so
-vendor/lib/hw/vulkan.exynos5.so
-vendor/lib64/hw/vulkan.exynos5.so
-vendor/lib/libOpenCL.so.1.1
-vendor/lib64/libOpenCL.so.1.1
+# symlink created by Android.mk: vendor/lib/hw/vulkan.exynos5.so
+# symlink created by Android.mk: vendor/lib64/hw/vulkan.exynos5.so
+# symlink created by Android.mk: vendor/lib/libOpenCL.so.1.1
+# symlink created by Android.mk: vendor/lib64/libOpenCL.so.1.1
 
 # Media
 vendor/firmware/companion_2l1_master_setfile.bin
+vendor/firmware/companion_2l1_master_setfile_d.bin
 vendor/firmware/companion_2l1_mode_setfile.bin
+vendor/firmware/companion_2l1_mode_setfile_d.bin
 vendor/firmware/companion_fw_2l1.bin
+vendor/firmware/companion_fw_2l1_d.bin
 vendor/firmware/companion_fw_imx260.bin
+vendor/firmware/companion_fw_imx260_d.bin
 vendor/firmware/companion_imx260_master_setfile.bin
+vendor/firmware/companion_imx260_master_setfile_d.bin
 vendor/firmware/companion_imx260_mode_setfile.bin
+vendor/firmware/companion_imx260_mode_setfile_d.bin
 vendor/firmware/fimc_is_fw2_2l1.bin
+vendor/firmware/fimc_is_fw2_2l1_d.bin
 vendor/firmware/fimc_is_fw2_imx260.bin
+vendor/firmware/fimc_is_fw2_imx260_d.bin
 vendor/firmware/mfc_fw.bin
 vendor/firmware/ois_fw_dom.bin
 vendor/firmware/ois_fw_sec.bin
 vendor/firmware/seiren_fw_dram.bin
 vendor/firmware/seiren_fw_sram.bin
 vendor/firmware/setfile_2l1.bin
+vendor/firmware/setfile_2l1_d.bin
 vendor/firmware/setfile_4e6.bin
+vendor/firmware/setfile_4e6_d.bin
 vendor/firmware/setfile_imx260.bin
+vendor/firmware/setfile_imx260_d.bin
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
+vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib64/mediadrm/libdrmclearkeyplugin.so
+vendor/lib/libSEF.so
+vendor/lib64/libSEF.so
+lib/libcsc.so
+lib64/libcsc.so
 
 # Mobicore
 app/FFFFFFFF000000000000000000000001.drbin
@@ -162,17 +217,11 @@ lib/libril.so
 lib/libsec-ril.so
 lib/libsec-ril-dsds.so
 lib/libsecnativefeature.so
-lib/libsecril-client.so
-lib/libxml2.so
-lib/libprotobuf-cpp-full.so
 lib64/libreference-ril.so
 lib64/libril.so
 lib64/libsec-ril.so
 lib64/libsec-ril-dsds.so
 lib64/libsecnativefeature.so
-lib64/libsecril-client.so
-lib64/libxml2.so
-lib64/libprotobuf-cpp-full.so
 
 # Sensors
 lib64/libhr.so
@@ -228,6 +277,10 @@ etc/wifi/nvram_net.txt_murata_c0
 etc/wifi/nvram_net.txt_wisol
 etc/wifi/nvram_net.txt_wisol_b1
 etc/wifi/nvram_net.txt_wisol_c0
+etc/wifi/cred.conf
+etc/wifi/p2p_supplicant_overlay.conf
+etc/wifi/wpa_supplicant.conf
+etc/wifi/wpa_supplicant_overlay.conf
 
 # CP Boot Daemon
-sbin/cbd
+../sbin/cbd:sbin/cbd
