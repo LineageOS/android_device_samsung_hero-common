@@ -32,7 +32,7 @@ for FILE in `egrep -v '(^#|^$)' common-proprietary-files.txt`; do
   then
     DEST=$FILE
   fi
-  DIR=`dirname $FILE`
+  DIR=`dirname $DEST`
   if [ ! -d $BASE/$DIR ]; then
     mkdir -p $BASE/$DIR
   fi
