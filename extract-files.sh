@@ -37,19 +37,11 @@ for FILE in `egrep -v '(^#|^$)' common-proprietary-files.txt`; do
     mkdir -p $BASE/$DIR
   fi
   if [ "$SRC" = "adb" ]; then
-    adb pull /system/$FILE $BASE/$DEST
-  # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
-        adb pull /system/$DEST $BASE/$DEST
-    fi
-  else
-    cp $SRC/system/$FILE $BASE/$DEST
     # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
-        cp $SRC/system/$DEST $BASE/$DEST
-    fi
+    adb pull /system/$FILE $BASE/$DEST || adb pull /system/$DEST $BASE/$DEST
+  else
+    # if file dot not exist try destination
+    cp $SRC/system/$FILE $BASE/$DEST || cp $SRC/system/$DEST $BASE/$DEST
   fi
 done
 
