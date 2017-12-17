@@ -272,4 +272,7 @@
 
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
+
+    <!-- Only light up capacitive keys when pressed -->
+    <bool name="config_buttonLightOnKeypressOnly">true</bool>
 </resources>
