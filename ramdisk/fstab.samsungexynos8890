@@ -11,6 +11,9 @@
 #/dev/block/platform/155a0000.ufs/by-name/CACHE		/cache		ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic	wait,check
 /dev/block/platform/155a0000.ufs/by-name/USERDATA	/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic	wait,check,encryptable=footer
 
+# OTA Updates
+/dev/block/platform/155a0000.ufs/by-name/OTA		/misc		emmc	defaults												defaults
+
 # VOLD
 /dev/block/platform/155a0000.ufs/by-name/HIDDEN          /preload    ext4    defaults    voldmanaged=preload:auto
 /devices/15740000.dwmmc2/mmc_host/mmc*                       auto    auto    defaults    voldmanaged=sdcard1:auto,encryptable=userdata
