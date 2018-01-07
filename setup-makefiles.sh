@@ -38,7 +38,7 @@ for FILE in `egrep -v '(^#|^$)' common-proprietary-files.txt`; do
       # Split the file from the destination (format is "file[:destination]")
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   if [[ ! "$FILE" =~ ^-.* ]]; then
-    FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
+    FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g" | sed -e "s/|.*//g"`
     DEST=${PARSING_ARRAY[1]}
     if [ -n "$DEST" ]; then
       FILE=$DEST
