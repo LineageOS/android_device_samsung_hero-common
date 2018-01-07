@@ -1,56 +1,57 @@
 #!/bin/bash
+# Copyright (C) 2017 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
 
 set -e
-export DEVICE=hero-common
-export VENDOR=samsung
 
-if [ $# -eq 0 ]; then
-  SRC=adb
-else
-  if [ $# -eq 1 ]; then
-    SRC=$1
-  else
-    echo "$0: bad number of arguments"
-    echo ""
-    echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
-    echo ""
-    echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
-    echo "the device using adb pull."
+DEVICE=hero-common
+VENDOR=samsung
+
+# Load extract_utils and do some sanity checks
+MY_DIR="${BASH_SOURCE%/*}"
+if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
+
+CM_ROOT="$MY_DIR"/../../..
+
+HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+if [ ! -f "$HELPER" ]; then
+    echo "Unable to find helper script at $HELPER"
     exit 1
-  fi
 fi
+source "$HELPER"
 
-BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
-rm -rf $BASE/*
+# Default to sanitizing the vendor folder before extraction
+CLEAN_VENDOR=true
 
-for FILE in `egrep -v '(^#|^$)' common-proprietary-files.txt`; do
-  echo "Extracting /system/$FILE ..."
-  OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
-  FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
-  DEST=${PARSING_ARRAY[1]}
-  if [ -z $DEST ]
-  then
-    DEST=$FILE
-  fi
-  DIR=`dirname $DEST`
-  if [ ! -d $BASE/$DIR ]; then
-    mkdir -p $BASE/$DIR
-  fi
-  if [ "$SRC" = "adb" ]; then
-    adb pull /system/$FILE $BASE/$DEST
-  # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
-        adb pull /system/$DEST $BASE/$DEST
-    fi
-  else
-    cp $SRC/system/$FILE $BASE/$DEST
-    # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
-        cp $SRC/system/$DEST $BASE/$DEST
-    fi
-  fi
+while [ "$1" != "" ]; do
+    case $1 in
+        -p | --path )           shift
+                                SRC=$1
+                                ;;
+        -s | --section )        shift
+                                SECTION=$1
+                                CLEAN_VENDOR=false
+                                ;;
+        -n | --no-cleanup )     CLEAN_VENDOR=false
+                                ;;
+        -i | --slsi )           shift
+                                SRC_SLSI=$1
+                                ;;
+    esac
+    shift
 done
 
-./setup-makefiles.sh
+if [ -z "$SRC" ]; then
+    SRC=adb
+fi
+
+if [ -z "$SRC_SLSI" ]; then
+    SRC_SLSI=$SRC
+fi
+
+# Initialize the helper
+setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" false "$CLEAN_VENDOR"
+
+extract "$MY_DIR"/common-proprietary-files.txt "$SRC" "$SECTION"
+
+"$MY_DIR"/setup-makefiles.sh
