@@ -16,5 +16,6 @@
         <package android:name="com.sec.android.wallet" />
         <package android:name="com.samsung.android.spay" />
         <package android:name="com.samsung.android.spayfw" />
+        <package android:name="com.sem.factoryapp" />
     </signer>
 </resources>
