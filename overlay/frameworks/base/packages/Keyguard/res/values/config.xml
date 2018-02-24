@@ -23,4 +23,8 @@
     <!-- Threshold in micro watts below which a charger is rated as "slow"; 1A @ 5V -->
     <integer name="config_chargingSlowlyThreshold">0</integer>
 
+    <!-- Disable listening for fingerprints when the screen is off.
+         This reduces battery drain significantly. -->
+    <bool name="config_fingerprintWakeAndUnlock">false</bool>
+
 </resources>
