@@ -51,7 +51,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 -
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
 
 # Packaging
-BLOCK_BASED_OTA := false
+BLOCK_BASED_OTA := true
 
 # Properties
 TARGET_SYSTEM_PROP := device/samsung/hero-common/system.prop
